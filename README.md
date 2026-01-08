@@ -20,11 +20,8 @@ Use the Vra Iaas MCP Server to enable AI assistants to interact with this API, a
 ## Installation
 
 ```sh
-npm install git+ssh://git@github.com:imtrinity94/vra-iaas-mcp-typescript.git
+npm install vra_iaas
 ```
-
-> [!NOTE]
-> Once this package is [published to npm](https://www.stainless.com/docs/guides/publish), this will become: `npm install vra_iaas`
 
 ## Usage
 
