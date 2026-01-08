@@ -9,9 +9,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/stainless-sdks/vra_iaas-typescript.git"
+    "url": "git+https://github.com/imtrinity94/vra-iaas-mcp-typescript.git"
   },
-  "homepage": "https://github.com/stainless-sdks/vra_iaas-typescript/tree/main/packages/mcp-server#readme",
+  "homepage": "https://github.com/imtrinity94/vra-iaas-mcp-typescript/tree/main/packages/mcp-server#readme",
   "documentation": "https://www.vmware.com/",
   "server": {
     "type": "node",
