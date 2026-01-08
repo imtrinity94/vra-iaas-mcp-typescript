@@ -9,8 +9,8 @@ It is generated with [Stainless](https://www.stainless.com/).
 Because it's not published yet, clone the repo and build it:
 
 ```sh
-git clone git@github.com:stainless-sdks/vra_iaas-typescript.git
-cd vra_iaas-typescript
+git clone git@github.com:imtrinity94/vra-iaas-mcp-typescript.git
+cd vra-iaas-mcp-typescript
 ./scripts/bootstrap
 ./scripts/build
 ```
@@ -40,7 +40,7 @@ For clients with a configuration JSON, it might look something like this:
   "mcpServers": {
     "vra_iaas_api": {
       "command": "node",
-      "args": ["/path/to/local/vra_iaas-typescript/packages/mcp-server"],
+      "args": ["/path/to/local/vra-iaas-mcp-typescript/packages/mcp-server"],
       "env": {
         "VRA_IAAS_BEARER_TOKEN": "My Bearer Token"
       }

@@ -42,15 +42,15 @@ If you’d like to use the repository from source, you can either install from g
 To install via git:
 
 ```sh
-$ npm install git+ssh://git@github.com:stainless-sdks/vra_iaas-typescript.git
+$ npm install git+ssh://git@github.com:imtrinity94/vra-iaas-mcp-typescript.git
 ```
 
 Alternatively, to link a local copy of the repo:
 
 ```sh
 # Clone
-$ git clone https://www.github.com/stainless-sdks/vra_iaas-typescript
-$ cd vra_iaas-typescript
+$ git clone https://www.github.com/imtrinity94/vra-iaas-mcp-typescript
+$ cd vra-iaas-mcp-typescript
 
 # With yarn
 $ yarn link

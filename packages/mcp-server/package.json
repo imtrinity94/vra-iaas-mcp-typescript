@@ -8,10 +8,10 @@
   "type": "commonjs",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/stainless-sdks/vra_iaas-typescript.git",
+    "url": "git+https://github.com/imtrinity94/vra-iaas-mcp-typescript.git",
     "directory": "packages/mcp-server"
   },
-  "homepage": "https://github.com/stainless-sdks/vra_iaas-typescript/tree/main/packages/mcp-server#readme",
+  "homepage": "https://github.com/imtrinity94/vra-iaas-mcp-typescript/tree/main/packages/mcp-server#readme",
   "license": "Apache-2.0",
   "packageManager": "pnpm@10.24.0",
   "private": false,
