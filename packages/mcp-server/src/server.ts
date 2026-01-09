@@ -21,7 +21,7 @@ export const newMcpServer = () =>
   new McpServer(
     {
       name: 'vra_iaas_api',
-      version: '0.0.2',
+      version: '0.0.3',
     },
     { capabilities: { tools: {}, logging: {} } },
   );

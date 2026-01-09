@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.0.3 (2026-01-09)
+
+Full Changelog: [v0.0.2...v0.0.3](https://github.com/imtrinity94/vra-iaas-mcp-typescript/compare/v0.0.2...v0.0.3)
+
+### Bug Fixes
+
+* **mcp:** update code tool prompt ([c5137c5](https://github.com/imtrinity94/vra-iaas-mcp-typescript/commit/c5137c520bf89dcdf685c7c513e7ddc1f761309a))
+
 ## 0.0.2 (2026-01-08)
 
 Full Changelog: [v0.0.1...v0.0.2](https://github.com/imtrinity94/vra-iaas-mcp-typescript/compare/v0.0.1...v0.0.2)
