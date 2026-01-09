@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.0.4 (2026-01-09)
+
+Full Changelog: [v0.0.3...v0.0.4](https://github.com/imtrinity94/vra-iaas-mcp-typescript/compare/v0.0.3...v0.0.4)
+
+### Chores
+
+* **internal:** configure MCP Server hosting ([9b109a6](https://github.com/imtrinity94/vra-iaas-mcp-typescript/commit/9b109a603b6d04eb596ebcfae5ec46cd4673e8b1))
+
 ## 0.0.3 (2026-01-09)
 
 Full Changelog: [v0.0.2...v0.0.3](https://github.com/imtrinity94/vra-iaas-mcp-typescript/compare/v0.0.2...v0.0.3)
