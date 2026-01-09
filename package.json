@@ -1,6 +1,6 @@
 {
   "name": "vra_iaas",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "The official TypeScript library for the Vra Iaas API",
   "author": "Vra Iaas <sales@vmware.com>",
   "types": "dist/index.d.ts",
