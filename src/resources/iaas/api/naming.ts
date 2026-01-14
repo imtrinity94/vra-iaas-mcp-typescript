@@ -454,27 +454,27 @@ export interface NamingCreateParams {
   apiVersion: string;
 
   /**
-   * Body param:
+   * Body param
    */
   id?: string;
 
   /**
-   * Body param:
+   * Body param
    */
   description?: string;
 
   /**
-   * Body param:
+   * Body param
    */
   name?: string;
 
   /**
-   * Body param:
+   * Body param
    */
   projects?: Array<NamingCreateParams.Project>;
 
   /**
-   * Body param:
+   * Body param
    */
   templates?: Array<NamingCreateParams.Template>;
 }
