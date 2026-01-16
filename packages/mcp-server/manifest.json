@@ -18,16 +18,25 @@
     "entry_point": "index.js",
     "mcp_config": {
       "command": "node",
-      "args": ["${__dirname}/index.js"],
+      "args": [
+        "${__dirname}/index.js"
+      ],
       "env": {
-        "VRA_IAAS_BEARER_TOKEN": "${user_config.VRA_IAAS_BEARER_TOKEN}"
+        "VRA_IAAS_BEARER_TOKEN": "${user_config.VRA_IAAS_BEARER_TOKEN}",
+        "VRA_IAAS_BASE_URL": "${user_config.VRA_IAAS_BASE_URL}"
       }
     }
   },
   "user_config": {
     "VRA_IAAS_BEARER_TOKEN": {
       "title": "bearer_token",
-      "description": "",
+      "description": "The bearer token for authentication",
+      "required": true,
+      "type": "string"
+    },
+    "VRA_IAAS_BASE_URL": {
+      "title": "base_url",
+      "description": "The base URL of your vRA instance (e.g., https://vra.example.com)",
       "required": true,
       "type": "string"
     }
@@ -39,5 +48,7 @@
       "node": ">=18.0.0"
     }
   },
-  "keywords": ["api"]
+  "keywords": [
+    "api"
+  ]
 }

@@ -9,8 +9,15 @@ It is generated with [Stainless](https://www.stainless.com/).
 You can run the MCP Server directly via `npx`:
 
 ```sh
+export VRA_IAAS_BASE_URL="https://vra.example.com"
 export VRA_IAAS_BEARER_TOKEN="My Bearer Token"
 npx -y vra_iaas-mcp@latest
+```
+
+Alternatively, you can provide these as CLI arguments:
+
+```sh
+npx -y vra_iaas-mcp@latest --base-url "https://vra.example.com" --bearer-token "My Bearer Token"
 ```
 
 ### Via MCP Client
@@ -25,8 +32,9 @@ For clients with a configuration JSON, it might look something like this:
   "mcpServers": {
     "vra_iaas_api": {
       "command": "npx",
-      "args": ["-y", "vra_iaas-mcp"],
+      "args": ["-y", "vra_iaas-mcp", "--base-url", "https://vra.example.com", "--bearer-token", "My Bearer Token"],
       "env": {
+        "VRA_IAAS_BASE_URL": "https://vra.example.com",
         "VRA_IAAS_BEARER_TOKEN": "My Bearer Token"
       }
     }

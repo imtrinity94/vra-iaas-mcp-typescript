@@ -7,6 +7,8 @@ export type CLIOptions = McpOptions & {
   transport: 'stdio' | 'http';
   port: number | undefined;
   socket: string | undefined;
+  bearerToken?: string | undefined;
+  baseURL?: string | undefined;
 };
 
 export type McpOptions = {
@@ -41,6 +43,14 @@ export function parseCLIOptions(): CLIOptions {
       type: 'string',
       description: 'Unix socket to serve on if using http transport',
     })
+    .option('bearer-token', {
+      type: 'string',
+      description: 'The bearer token to use for authentication',
+    })
+    .option('base-url', {
+      type: 'string',
+      description: 'The base URL for the Vra Iaas API',
+    })
     .help();
 
   const argv = opts.parseSync();
@@ -59,6 +69,8 @@ export function parseCLIOptions(): CLIOptions {
     transport,
     port: argv.port,
     socket: argv.socket,
+    bearerToken: argv.bearerToken,
+    baseURL: argv.baseUrl,
   };
 }
 

@@ -2,8 +2,9 @@
 
 import { McpTool, Metadata, ToolCallResult, asErrorResult, asTextContentResult } from './types';
 import { Tool } from '@modelcontextprotocol/sdk/types.js';
-import { readEnv, readEnvOrError } from './server';
+import { readEnv } from './server';
 import { WorkerInput, WorkerOutput } from './code-tool-types';
+import { VraIaas } from 'vra_iaas';
 
 const prompt = `Runs JavaScript code to interact with the Vra Iaas API.
 
@@ -41,7 +42,7 @@ export function codeTool(): McpTool {
     description: prompt,
     inputSchema: { type: 'object', properties: { code: { type: 'string' } } },
   };
-  const handler = async (_: unknown, args: any): Promise<ToolCallResult> => {
+  const handler = async (client: VraIaas, args: any): Promise<ToolCallResult> => {
     const code = args.code as string;
 
     // this is not required, but passing a Stainless API key for the matching project_name
@@ -56,8 +57,8 @@ export function codeTool(): McpTool {
         ...(stainlessAPIKey && { Authorization: stainlessAPIKey }),
         'Content-Type': 'application/json',
         client_envs: JSON.stringify({
-          VRA_IAAS_BEARER_TOKEN: readEnvOrError('VRA_IAAS_BEARER_TOKEN'),
-          VRA_IAAS_BASE_URL: readEnv('VRA_IAAS_BASE_URL'),
+          VRA_IAAS_BEARER_TOKEN: client.bearerToken,
+          VRA_IAAS_BASE_URL: client.baseURL,
         }),
       },
       body: JSON.stringify({
@@ -69,8 +70,7 @@ export function codeTool(): McpTool {
 
     if (!res.ok) {
       throw new Error(
-        `${res.status}: ${
-          res.statusText
+        `${res.status}: ${res.statusText
         } error when trying to contact Code Tool server. Details: ${await res.text()}`,
       );
     }

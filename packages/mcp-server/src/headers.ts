@@ -7,6 +7,10 @@ export const parseAuthHeaders = (req: IncomingMessage): Partial<ClientOptions> =
   const bearerToken =
     Array.isArray(req.headers['x-vra-iaas-bearer-token']) ?
       req.headers['x-vra-iaas-bearer-token'][0]
-    : req.headers['x-vra-iaas-bearer-token'];
-  return { bearerToken };
+      : req.headers['x-vra-iaas-bearer-token'];
+  const baseURL =
+    Array.isArray(req.headers['x-vra-iaas-base-url']) ?
+      req.headers['x-vra-iaas-base-url'][0]
+      : req.headers['x-vra-iaas-base-url'];
+  return { bearerToken, baseURL };
 };
