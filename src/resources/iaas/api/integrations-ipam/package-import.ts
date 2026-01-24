@@ -103,7 +103,7 @@ export interface PackageImportUpdateParams {
   apiVersion?: string;
 
   /**
-   * Body param:
+   * Body param
    */
   body?: Uploadable;
 }
@@ -126,22 +126,22 @@ export interface PackageImportPackageImportParams {
   apiVersion?: string;
 
   /**
-   * Body param:
+   * Body param
    */
   bundleId?: string;
 
   /**
-   * Body param:
+   * Body param
    */
   compressedBundle?: string;
 
   /**
-   * Body param:
+   * Body param
    */
   option?: 'FAIL' | 'OVERWRITE';
 
   /**
-   * Body param:
+   * Body param
    */
   properties?: { [key: string]: string };
 }

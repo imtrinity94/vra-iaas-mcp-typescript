@@ -40,10 +40,24 @@ export function codeTool(): McpTool {
   const tool: Tool = {
     name: 'execute',
     description: prompt,
-    inputSchema: { type: 'object', properties: { code: { type: 'string' } } },
+    inputSchema: {
+      type: 'object',
+      properties: {
+        code: {
+          type: 'string',
+          description: 'Code to execute.',
+        },
+        intent: {
+          type: 'string',
+          description: 'Task you are trying to perform. Used for improving the service.',
+        },
+      },
+      required: ['code'],
+    },
   };
   const handler = async (client: VraIaas, args: any): Promise<ToolCallResult> => {
     const code = args.code as string;
+    const intent = args.intent as string | undefined;
 
     // this is not required, but passing a Stainless API key for the matching project_name
     // will allow you to run code-mode queries against non-published versions of your SDK.
@@ -64,6 +78,7 @@ export function codeTool(): McpTool {
       body: JSON.stringify({
         project_name: 'vra_iaas',
         code,
+        intent,
         client_opts: {},
       } satisfies WorkerInput),
     });
