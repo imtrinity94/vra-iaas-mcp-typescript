@@ -2,7 +2,7 @@
 
 import { McpTool, Metadata, ToolCallResult, asErrorResult, asTextContentResult } from './types';
 import { Tool } from '@modelcontextprotocol/sdk/types.js';
-import { readEnv, readEnvOrError } from './server';
+import { readEnv, requireValue } from './server';
 import { WorkerInput, WorkerOutput } from './code-tool-types';
 import { VraIaas } from 'vra_iaas';
 
@@ -71,7 +71,10 @@ export function codeTool(): McpTool {
         ...(stainlessAPIKey && { Authorization: stainlessAPIKey }),
         'Content-Type': 'application/json',
         client_envs: JSON.stringify({
-          VRA_IAAS_BEARER_TOKEN: readEnvOrError('VRA_IAAS_BEARER_TOKEN') ?? client.bearerToken ?? undefined,
+          VRA_IAAS_BEARER_TOKEN: requireValue(
+            readEnv('VRA_IAAS_BEARER_TOKEN') ?? client.bearerToken,
+            'set VRA_IAAS_BEARER_TOKEN environment variable or provide bearerToken client option',
+          ),
           VRA_IAAS_BASE_URL: readEnv('VRA_IAAS_BASE_URL') ?? client.baseURL ?? undefined,
         }),
       },
