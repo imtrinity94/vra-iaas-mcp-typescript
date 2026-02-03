@@ -3,7 +3,7 @@
 import { IncomingMessage } from 'node:http';
 import { ClientOptions } from 'vra_iaas';
 
-export const parseAuthHeaders = (req: IncomingMessage): Partial<ClientOptions> => {
+export const parseAuthHeaders = (req: IncomingMessage, required?: boolean): Partial<ClientOptions> => {
   const bearerToken =
     Array.isArray(req.headers['x-vra-iaas-bearer-token']) ?
       req.headers['x-vra-iaas-bearer-token'][0]
