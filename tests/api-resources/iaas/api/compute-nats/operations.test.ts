@@ -8,7 +8,7 @@ const client = new VraIaas({
 });
 
 describe('resource operations', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('reconfigure: only required params', async () => {
     const responsePromise = client.iaas.api.computeNats.operations.reconfigure('id', {
       natRules: [
@@ -28,7 +28,7 @@ describe('resource operations', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('reconfigure: required and optional params', async () => {
     const response = await client.iaas.api.computeNats.operations.reconfigure('id', {
       natRules: [

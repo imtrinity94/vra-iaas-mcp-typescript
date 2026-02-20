@@ -8,7 +8,7 @@ const client = new VraIaas({
 });
 
 describe('resource fabricVsphereStoragePolicies', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve', async () => {
     const responsePromise = client.iaas.api.fabricVsphereStoragePolicies.retrieve('id');
     const rawResponse = await responsePromise.asResponse();
@@ -20,7 +20,7 @@ describe('resource fabricVsphereStoragePolicies', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -32,7 +32,7 @@ describe('resource fabricVsphereStoragePolicies', () => {
     ).rejects.toThrow(VraIaas.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveFabricVsphereStoragePolicies', async () => {
     const responsePromise =
       client.iaas.api.fabricVsphereStoragePolicies.retrieveFabricVsphereStoragePolicies();
@@ -45,7 +45,7 @@ describe('resource fabricVsphereStoragePolicies', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveFabricVsphereStoragePolicies: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(

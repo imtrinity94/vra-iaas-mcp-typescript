@@ -8,7 +8,7 @@ const client = new VraIaas({
 });
 
 describe('resource fabricAzureStorageAccounts', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve', async () => {
     const responsePromise = client.iaas.api.fabricAzureStorageAccounts.retrieve('id');
     const rawResponse = await responsePromise.asResponse();
@@ -20,7 +20,7 @@ describe('resource fabricAzureStorageAccounts', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -32,7 +32,7 @@ describe('resource fabricAzureStorageAccounts', () => {
     ).rejects.toThrow(VraIaas.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveFabricAzureStorageAccounts', async () => {
     const responsePromise = client.iaas.api.fabricAzureStorageAccounts.retrieveFabricAzureStorageAccounts();
     const rawResponse = await responsePromise.asResponse();
@@ -44,7 +44,7 @@ describe('resource fabricAzureStorageAccounts', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveFabricAzureStorageAccounts: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(

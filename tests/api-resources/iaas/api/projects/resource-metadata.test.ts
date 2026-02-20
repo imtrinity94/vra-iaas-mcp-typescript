@@ -8,7 +8,7 @@ const client = new VraIaas({
 });
 
 describe('resource resourceMetadata', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveResourceMetadata', async () => {
     const responsePromise = client.iaas.api.projects.resourceMetadata.retrieveResourceMetadata('id');
     const rawResponse = await responsePromise.asResponse();
@@ -20,7 +20,7 @@ describe('resource resourceMetadata', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveResourceMetadata: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -32,7 +32,7 @@ describe('resource resourceMetadata', () => {
     ).rejects.toThrow(VraIaas.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('updateResourceMetadata', async () => {
     const responsePromise = client.iaas.api.projects.resourceMetadata.updateResourceMetadata('id', {});
     const rawResponse = await responsePromise.asResponse();

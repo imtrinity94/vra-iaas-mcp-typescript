@@ -8,7 +8,7 @@ const client = new VraIaas({
 });
 
 describe('resource operations', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('delete', async () => {
     const responsePromise = client.iaas.api.loadBalancers.operations.delete('id');
     const rawResponse = await responsePromise.asResponse();
@@ -20,7 +20,7 @@ describe('resource operations', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('delete: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -32,7 +32,7 @@ describe('resource operations', () => {
     ).rejects.toThrow(VraIaas.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('scale: only required params', async () => {
     const responsePromise = client.iaas.api.loadBalancers.operations.scale('id', {
       name: 'name',
@@ -56,7 +56,7 @@ describe('resource operations', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('scale: required and optional params', async () => {
     const response = await client.iaas.api.loadBalancers.operations.scale('id', {
       name: 'name',

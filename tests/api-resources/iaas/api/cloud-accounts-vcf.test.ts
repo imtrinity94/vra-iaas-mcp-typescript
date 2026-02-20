@@ -8,7 +8,7 @@ const client = new VraIaas({
 });
 
 describe('resource cloudAccountsVcf', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve', async () => {
     const responsePromise = client.iaas.api.cloudAccountsVcf.retrieve('id');
     const rawResponse = await responsePromise.asResponse();
@@ -20,7 +20,7 @@ describe('resource cloudAccountsVcf', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -32,7 +32,7 @@ describe('resource cloudAccountsVcf', () => {
     ).rejects.toThrow(VraIaas.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update: only required params', async () => {
     const responsePromise = client.iaas.api.cloudAccountsVcf.update('id', {
       apiVersion: 'apiVersion',
@@ -56,7 +56,7 @@ describe('resource cloudAccountsVcf', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update: required and optional params', async () => {
     const response = await client.iaas.api.cloudAccountsVcf.update('id', {
       apiVersion: 'apiVersion',
@@ -85,7 +85,7 @@ describe('resource cloudAccountsVcf', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('delete: only required params', async () => {
     const responsePromise = client.iaas.api.cloudAccountsVcf.delete('id', { apiVersion: 'apiVersion' });
     const rawResponse = await responsePromise.asResponse();
@@ -97,12 +97,12 @@ describe('resource cloudAccountsVcf', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('delete: required and optional params', async () => {
     const response = await client.iaas.api.cloudAccountsVcf.delete('id', { apiVersion: 'apiVersion' });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('cloudAccountsVcf: only required params', async () => {
     const responsePromise = client.iaas.api.cloudAccountsVcf.cloudAccountsVcf({
       apiVersion: 'apiVersion',
@@ -126,7 +126,7 @@ describe('resource cloudAccountsVcf', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('cloudAccountsVcf: required and optional params', async () => {
     const response = await client.iaas.api.cloudAccountsVcf.cloudAccountsVcf({
       apiVersion: 'apiVersion',
@@ -156,7 +156,7 @@ describe('resource cloudAccountsVcf', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('privateImageEnumeration', async () => {
     const responsePromise = client.iaas.api.cloudAccountsVcf.privateImageEnumeration('id');
     const rawResponse = await responsePromise.asResponse();
@@ -168,7 +168,7 @@ describe('resource cloudAccountsVcf', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('privateImageEnumeration: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -180,7 +180,7 @@ describe('resource cloudAccountsVcf', () => {
     ).rejects.toThrow(VraIaas.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('regionEnumeration: only required params', async () => {
     const responsePromise = client.iaas.api.cloudAccountsVcf.regionEnumeration({ apiVersion: 'apiVersion' });
     const rawResponse = await responsePromise.asResponse();
@@ -192,7 +192,7 @@ describe('resource cloudAccountsVcf', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('regionEnumeration: required and optional params', async () => {
     const response = await client.iaas.api.cloudAccountsVcf.regionEnumeration({
       apiVersion: 'apiVersion',
@@ -217,7 +217,7 @@ describe('resource cloudAccountsVcf', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveCloudAccountsVcf', async () => {
     const responsePromise = client.iaas.api.cloudAccountsVcf.retrieveCloudAccountsVcf();
     const rawResponse = await responsePromise.asResponse();
@@ -229,7 +229,7 @@ describe('resource cloudAccountsVcf', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveCloudAccountsVcf: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(

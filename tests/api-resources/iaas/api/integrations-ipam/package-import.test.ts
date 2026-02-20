@@ -8,7 +8,7 @@ const client = new VraIaas({
 });
 
 describe('resource packageImport', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update: only required params', async () => {
     const responsePromise = client.iaas.api.integrationsIpam.packageImport.update('id', {
       'Tus-Resumable': '1.0.0',
@@ -23,7 +23,7 @@ describe('resource packageImport', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update: required and optional params', async () => {
     const response = await client.iaas.api.integrationsIpam.packageImport.update('id', {
       'Tus-Resumable': '1.0.0',
@@ -33,7 +33,7 @@ describe('resource packageImport', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('packageImport: only required params', async () => {
     const responsePromise = client.iaas.api.integrationsIpam.packageImport.packageImport({
       'Tus-Resumable': '1.0.0',
@@ -48,7 +48,7 @@ describe('resource packageImport', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('packageImport: required and optional params', async () => {
     const response = await client.iaas.api.integrationsIpam.packageImport.packageImport({
       'Tus-Resumable': '1.0.0',

@@ -8,7 +8,7 @@ const client = new VraIaas({
 });
 
 describe('resource operations', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update: only required params', async () => {
     const responsePromise = client.iaas.api.machines.operations.update('snapshotId', {
       id: 'id',
@@ -23,7 +23,7 @@ describe('resource operations', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update: required and optional params', async () => {
     const response = await client.iaas.api.machines.operations.update('snapshotId', {
       id: 'id',
@@ -31,7 +31,7 @@ describe('resource operations', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('changeSecurityGroups: only required params', async () => {
     const responsePromise = client.iaas.api.machines.operations.changeSecurityGroups('id', {
       body_id: '9.0E49',
@@ -46,7 +46,7 @@ describe('resource operations', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('changeSecurityGroups: required and optional params', async () => {
     const response = await client.iaas.api.machines.operations.changeSecurityGroups('id', {
       body_id: '9.0E49',
@@ -75,7 +75,7 @@ describe('resource operations', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('powerOff', async () => {
     const responsePromise = client.iaas.api.machines.operations.powerOff('id');
     const rawResponse = await responsePromise.asResponse();
@@ -87,7 +87,7 @@ describe('resource operations', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('powerOff: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -99,7 +99,7 @@ describe('resource operations', () => {
     ).rejects.toThrow(VraIaas.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('powerOn', async () => {
     const responsePromise = client.iaas.api.machines.operations.powerOn('id');
     const rawResponse = await responsePromise.asResponse();
@@ -111,7 +111,7 @@ describe('resource operations', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('powerOn: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -123,7 +123,7 @@ describe('resource operations', () => {
     ).rejects.toThrow(VraIaas.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('reboot', async () => {
     const responsePromise = client.iaas.api.machines.operations.reboot('id');
     const rawResponse = await responsePromise.asResponse();
@@ -135,7 +135,7 @@ describe('resource operations', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('reboot: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -147,7 +147,7 @@ describe('resource operations', () => {
     ).rejects.toThrow(VraIaas.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('reset', async () => {
     const responsePromise = client.iaas.api.machines.operations.reset('id');
     const rawResponse = await responsePromise.asResponse();
@@ -159,7 +159,7 @@ describe('resource operations', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('reset: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -171,7 +171,7 @@ describe('resource operations', () => {
     ).rejects.toThrow(VraIaas.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('resize', async () => {
     const responsePromise = client.iaas.api.machines.operations.resize('id');
     const rawResponse = await responsePromise.asResponse();
@@ -183,7 +183,7 @@ describe('resource operations', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('resize: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -202,7 +202,7 @@ describe('resource operations', () => {
     ).rejects.toThrow(VraIaas.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('restart', async () => {
     const responsePromise = client.iaas.api.machines.operations.restart('id');
     const rawResponse = await responsePromise.asResponse();
@@ -214,7 +214,7 @@ describe('resource operations', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('restart: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -226,7 +226,7 @@ describe('resource operations', () => {
     ).rejects.toThrow(VraIaas.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('shutdown', async () => {
     const responsePromise = client.iaas.api.machines.operations.shutdown('id');
     const rawResponse = await responsePromise.asResponse();
@@ -238,7 +238,7 @@ describe('resource operations', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('shutdown: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -250,7 +250,7 @@ describe('resource operations', () => {
     ).rejects.toThrow(VraIaas.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('snapshots: only required params', async () => {
     const responsePromise = client.iaas.api.machines.operations.snapshots('id', {
       body_id: '9.0E49',
@@ -265,7 +265,7 @@ describe('resource operations', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('snapshots: required and optional params', async () => {
     const response = await client.iaas.api.machines.operations.snapshots('id', {
       body_id: '9.0E49',
@@ -283,7 +283,7 @@ describe('resource operations', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('suspend', async () => {
     const responsePromise = client.iaas.api.machines.operations.suspend('id');
     const rawResponse = await responsePromise.asResponse();
@@ -295,7 +295,7 @@ describe('resource operations', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('suspend: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -307,7 +307,7 @@ describe('resource operations', () => {
     ).rejects.toThrow(VraIaas.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('unregister', async () => {
     const responsePromise = client.iaas.api.machines.operations.unregister('id');
     const rawResponse = await responsePromise.asResponse();
@@ -319,7 +319,7 @@ describe('resource operations', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('unregister: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(

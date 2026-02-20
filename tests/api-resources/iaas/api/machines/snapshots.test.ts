@@ -8,7 +8,7 @@ const client = new VraIaas({
 });
 
 describe('resource snapshots', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve: only required params', async () => {
     const responsePromise = client.iaas.api.machines.snapshots.retrieve('snapshotId', { id: 'id' });
     const rawResponse = await responsePromise.asResponse();
@@ -20,7 +20,7 @@ describe('resource snapshots', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve: required and optional params', async () => {
     const response = await client.iaas.api.machines.snapshots.retrieve('snapshotId', {
       id: 'id',
@@ -28,7 +28,7 @@ describe('resource snapshots', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('list', async () => {
     const responsePromise = client.iaas.api.machines.snapshots.list('id');
     const rawResponse = await responsePromise.asResponse();
@@ -40,7 +40,7 @@ describe('resource snapshots', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -52,7 +52,7 @@ describe('resource snapshots', () => {
     ).rejects.toThrow(VraIaas.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('delete: only required params', async () => {
     const responsePromise = client.iaas.api.machines.snapshots.delete('snapshotId', { id: 'id' });
     const rawResponse = await responsePromise.asResponse();
@@ -64,7 +64,7 @@ describe('resource snapshots', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('delete: required and optional params', async () => {
     const response = await client.iaas.api.machines.snapshots.delete('snapshotId', {
       id: 'id',

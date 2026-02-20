@@ -8,7 +8,7 @@ const client = new VraIaas({
 });
 
 describe('resource api', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve: only required params', async () => {
     const responsePromise = client.iaas.api.retrieve('id', { apiVersion: 'apiVersion' });
     const rawResponse = await responsePromise.asResponse();
@@ -20,12 +20,12 @@ describe('resource api', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve: required and optional params', async () => {
     const response = await client.iaas.api.retrieve('id', { apiVersion: 'apiVersion' });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('login: only required params', async () => {
     const responsePromise = client.iaas.api.login({ refreshToken: '5e7c2c-9a9e-4b0-9339-a7f94' });
     const rawResponse = await responsePromise.asResponse();
@@ -37,7 +37,7 @@ describe('resource api', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('login: required and optional params', async () => {
     const response = await client.iaas.api.login({
       refreshToken: '5e7c2c-9a9e-4b0-9339-a7f94',
@@ -45,7 +45,7 @@ describe('resource api', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveAbout', async () => {
     const responsePromise = client.iaas.api.retrieveAbout();
     const rawResponse = await responsePromise.asResponse();
@@ -57,7 +57,7 @@ describe('resource api', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveEventLogs', async () => {
     const responsePromise = client.iaas.api.retrieveEventLogs();
     const rawResponse = await responsePromise.asResponse();
@@ -69,7 +69,7 @@ describe('resource api', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveEventLogs: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -89,7 +89,7 @@ describe('resource api', () => {
     ).rejects.toThrow(VraIaas.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveFabricAwsVolumeTypes', async () => {
     const responsePromise = client.iaas.api.retrieveFabricAwsVolumeTypes();
     const rawResponse = await responsePromise.asResponse();
@@ -101,7 +101,7 @@ describe('resource api', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveFabricAwsVolumeTypes: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -112,7 +112,7 @@ describe('resource api', () => {
     ).rejects.toThrow(VraIaas.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveFabricAzureDiskEncryptionSets: only required params', async () => {
     const responsePromise = client.iaas.api.retrieveFabricAzureDiskEncryptionSets({ regionId: 'regionId' });
     const rawResponse = await responsePromise.asResponse();
@@ -124,7 +124,7 @@ describe('resource api', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveFabricAzureDiskEncryptionSets: required and optional params', async () => {
     const response = await client.iaas.api.retrieveFabricAzureDiskEncryptionSets({
       regionId: 'regionId',
@@ -132,7 +132,7 @@ describe('resource api', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveFabricFlavors', async () => {
     const responsePromise = client.iaas.api.retrieveFabricFlavors();
     const rawResponse = await responsePromise.asResponse();
@@ -144,7 +144,7 @@ describe('resource api', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveFabricFlavors: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -155,7 +155,7 @@ describe('resource api', () => {
     ).rejects.toThrow(VraIaas.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveFlavors', async () => {
     const responsePromise = client.iaas.api.retrieveFlavors();
     const rawResponse = await responsePromise.asResponse();
@@ -167,7 +167,7 @@ describe('resource api', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveFlavors: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -178,7 +178,7 @@ describe('resource api', () => {
     ).rejects.toThrow(VraIaas.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveFolders: only required params', async () => {
     const responsePromise = client.iaas.api.retrieveFolders({ apiVersion: 'apiVersion' });
     const rawResponse = await responsePromise.asResponse();
@@ -190,7 +190,7 @@ describe('resource api', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveFolders: required and optional params', async () => {
     const response = await client.iaas.api.retrieveFolders({
       apiVersion: 'apiVersion',
@@ -204,7 +204,7 @@ describe('resource api', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveImages', async () => {
     const responsePromise = client.iaas.api.retrieveImages();
     const rawResponse = await responsePromise.asResponse();
@@ -216,7 +216,7 @@ describe('resource api', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveImages: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -224,7 +224,7 @@ describe('resource api', () => {
     ).rejects.toThrow(VraIaas.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveRequestGraph: only required params', async () => {
     const responsePromise = client.iaas.api.retrieveRequestGraph({
       deploymentId: 'deploymentId',
@@ -239,7 +239,7 @@ describe('resource api', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveRequestGraph: required and optional params', async () => {
     const response = await client.iaas.api.retrieveRequestGraph({
       deploymentId: 'deploymentId',

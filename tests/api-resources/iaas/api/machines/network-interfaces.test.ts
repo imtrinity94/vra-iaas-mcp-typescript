@@ -8,7 +8,7 @@ const client = new VraIaas({
 });
 
 describe('resource networkInterfaces', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve: only required params', async () => {
     const responsePromise = client.iaas.api.machines.networkInterfaces.retrieve('networkId', { id: 'id' });
     const rawResponse = await responsePromise.asResponse();
@@ -20,7 +20,7 @@ describe('resource networkInterfaces', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve: required and optional params', async () => {
     const response = await client.iaas.api.machines.networkInterfaces.retrieve('networkId', {
       id: 'id',
@@ -28,7 +28,7 @@ describe('resource networkInterfaces', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update: only required params', async () => {
     const responsePromise = client.iaas.api.machines.networkInterfaces.update('networkId', {
       id: 'id',
@@ -43,7 +43,7 @@ describe('resource networkInterfaces', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update: required and optional params', async () => {
     const response = await client.iaas.api.machines.networkInterfaces.update('networkId', {
       id: 'id',

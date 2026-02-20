@@ -8,7 +8,7 @@ const client = new VraIaas({
 });
 
 describe('resource networkIPRanges', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve', async () => {
     const responsePromise = client.iaas.api.networkIPRanges.retrieve('id');
     const rawResponse = await responsePromise.asResponse();
@@ -20,7 +20,7 @@ describe('resource networkIPRanges', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -32,7 +32,7 @@ describe('resource networkIPRanges', () => {
     ).rejects.toThrow(VraIaas.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update: only required params', async () => {
     const responsePromise = client.iaas.api.networkIPRanges.update('id', {
       endIPAddress: 'endIPAddress',
@@ -48,7 +48,7 @@ describe('resource networkIPRanges', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update: required and optional params', async () => {
     const response = await client.iaas.api.networkIPRanges.update('id', {
       endIPAddress: 'endIPAddress',
@@ -62,7 +62,7 @@ describe('resource networkIPRanges', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('delete', async () => {
     const responsePromise = client.iaas.api.networkIPRanges.delete('id');
     const rawResponse = await responsePromise.asResponse();
@@ -74,7 +74,7 @@ describe('resource networkIPRanges', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('delete: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -86,7 +86,7 @@ describe('resource networkIPRanges', () => {
     ).rejects.toThrow(VraIaas.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('networkIPRanges: only required params', async () => {
     const responsePromise = client.iaas.api.networkIPRanges.networkIPRanges({
       endIPAddress: 'endIPAddress',
@@ -102,7 +102,7 @@ describe('resource networkIPRanges', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('networkIPRanges: required and optional params', async () => {
     const response = await client.iaas.api.networkIPRanges.networkIPRanges({
       endIPAddress: 'endIPAddress',
@@ -116,7 +116,7 @@ describe('resource networkIPRanges', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveNetworkIPRanges', async () => {
     const responsePromise = client.iaas.api.networkIPRanges.retrieveNetworkIPRanges();
     const rawResponse = await responsePromise.asResponse();
@@ -128,7 +128,7 @@ describe('resource networkIPRanges', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveNetworkIPRanges: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(

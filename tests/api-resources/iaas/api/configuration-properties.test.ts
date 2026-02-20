@@ -8,7 +8,7 @@ const client = new VraIaas({
 });
 
 describe('resource configurationProperties', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve: only required params', async () => {
     const responsePromise = client.iaas.api.configurationProperties.retrieve('id', {
       apiVersion: 'apiVersion',
@@ -22,14 +22,14 @@ describe('resource configurationProperties', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve: required and optional params', async () => {
     const response = await client.iaas.api.configurationProperties.retrieve('id', {
       apiVersion: 'apiVersion',
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('delete: only required params', async () => {
     const responsePromise = client.iaas.api.configurationProperties.delete('id', {
       apiVersion: 'apiVersion',
@@ -43,12 +43,12 @@ describe('resource configurationProperties', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('delete: required and optional params', async () => {
     const response = await client.iaas.api.configurationProperties.delete('id', { apiVersion: 'apiVersion' });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveConfigurationProperties: only required params', async () => {
     const responsePromise = client.iaas.api.configurationProperties.retrieveConfigurationProperties({
       apiVersion: 'apiVersion',
@@ -62,14 +62,14 @@ describe('resource configurationProperties', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveConfigurationProperties: required and optional params', async () => {
     const response = await client.iaas.api.configurationProperties.retrieveConfigurationProperties({
       apiVersion: 'apiVersion',
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('updateConfigurationProperties: only required params', async () => {
     const responsePromise = client.iaas.api.configurationProperties.updateConfigurationProperties({
       apiVersion: 'apiVersion',
@@ -85,7 +85,7 @@ describe('resource configurationProperties', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('updateConfigurationProperties: required and optional params', async () => {
     const response = await client.iaas.api.configurationProperties.updateConfigurationProperties({
       apiVersion: 'apiVersion',

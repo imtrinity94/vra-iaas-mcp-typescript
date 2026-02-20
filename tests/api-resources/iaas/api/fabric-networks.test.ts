@@ -8,7 +8,7 @@ const client = new VraIaas({
 });
 
 describe('resource fabricNetworks', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve', async () => {
     const responsePromise = client.iaas.api.fabricNetworks.retrieve('id');
     const rawResponse = await responsePromise.asResponse();
@@ -20,7 +20,7 @@ describe('resource fabricNetworks', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -32,7 +32,7 @@ describe('resource fabricNetworks', () => {
     ).rejects.toThrow(VraIaas.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update', async () => {
     const responsePromise = client.iaas.api.fabricNetworks.update('id', {});
     const rawResponse = await responsePromise.asResponse();
@@ -44,7 +44,7 @@ describe('resource fabricNetworks', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveFabricNetworks', async () => {
     const responsePromise = client.iaas.api.fabricNetworks.retrieveFabricNetworks();
     const rawResponse = await responsePromise.asResponse();
@@ -56,7 +56,7 @@ describe('resource fabricNetworks', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveFabricNetworks: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -74,7 +74,7 @@ describe('resource fabricNetworks', () => {
     ).rejects.toThrow(VraIaas.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveNetworkIPRanges', async () => {
     const responsePromise = client.iaas.api.fabricNetworks.retrieveNetworkIPRanges('id');
     const rawResponse = await responsePromise.asResponse();
@@ -86,7 +86,7 @@ describe('resource fabricNetworks', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveNetworkIPRanges: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(

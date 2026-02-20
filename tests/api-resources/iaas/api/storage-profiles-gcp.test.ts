@@ -8,7 +8,7 @@ const client = new VraIaas({
 });
 
 describe('resource storageProfilesGcp', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve', async () => {
     const responsePromise = client.iaas.api.storageProfilesGcp.retrieve('id');
     const rawResponse = await responsePromise.asResponse();
@@ -20,7 +20,7 @@ describe('resource storageProfilesGcp', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -32,7 +32,7 @@ describe('resource storageProfilesGcp', () => {
     ).rejects.toThrow(VraIaas.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update: only required params', async () => {
     const responsePromise = client.iaas.api.storageProfilesGcp.update('id', {
       name: 'name',
@@ -48,7 +48,7 @@ describe('resource storageProfilesGcp', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update: required and optional params', async () => {
     const response = await client.iaas.api.storageProfilesGcp.update('id', {
       name: 'name',
@@ -62,7 +62,7 @@ describe('resource storageProfilesGcp', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('delete', async () => {
     const responsePromise = client.iaas.api.storageProfilesGcp.delete('id');
     const rawResponse = await responsePromise.asResponse();
@@ -74,7 +74,7 @@ describe('resource storageProfilesGcp', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('delete: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -86,7 +86,7 @@ describe('resource storageProfilesGcp', () => {
     ).rejects.toThrow(VraIaas.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveStorageProfilesGcp', async () => {
     const responsePromise = client.iaas.api.storageProfilesGcp.retrieveStorageProfilesGcp();
     const rawResponse = await responsePromise.asResponse();
@@ -98,7 +98,7 @@ describe('resource storageProfilesGcp', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveStorageProfilesGcp: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -109,7 +109,7 @@ describe('resource storageProfilesGcp', () => {
     ).rejects.toThrow(VraIaas.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('storageProfilesGcp: only required params', async () => {
     const responsePromise = client.iaas.api.storageProfilesGcp.storageProfilesGcp({
       name: 'name',
@@ -125,7 +125,7 @@ describe('resource storageProfilesGcp', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('storageProfilesGcp: required and optional params', async () => {
     const response = await client.iaas.api.storageProfilesGcp.storageProfilesGcp({
       name: 'name',

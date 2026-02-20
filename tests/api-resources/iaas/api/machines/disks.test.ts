@@ -8,7 +8,7 @@ const client = new VraIaas({
 });
 
 describe('resource disks', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.iaas.api.machines.disks.create('id', { blockDeviceId: '1298765' });
     const rawResponse = await responsePromise.asResponse();
@@ -20,7 +20,7 @@ describe('resource disks', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('create: required and optional params', async () => {
     const response = await client.iaas.api.machines.disks.create('id', {
       blockDeviceId: '1298765',
@@ -33,7 +33,7 @@ describe('resource disks', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve: only required params', async () => {
     const responsePromise = client.iaas.api.machines.disks.retrieve('diskId', { id: 'id' });
     const rawResponse = await responsePromise.asResponse();
@@ -45,7 +45,7 @@ describe('resource disks', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve: required and optional params', async () => {
     const response = await client.iaas.api.machines.disks.retrieve('diskId', {
       id: 'id',
@@ -53,7 +53,7 @@ describe('resource disks', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('list', async () => {
     const responsePromise = client.iaas.api.machines.disks.list('id');
     const rawResponse = await responsePromise.asResponse();
@@ -65,7 +65,7 @@ describe('resource disks', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('list: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -77,7 +77,7 @@ describe('resource disks', () => {
     ).rejects.toThrow(VraIaas.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('delete: only required params', async () => {
     const responsePromise = client.iaas.api.machines.disks.delete('diskId', { id: 'id' });
     const rawResponse = await responsePromise.asResponse();
@@ -89,7 +89,7 @@ describe('resource disks', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('delete: required and optional params', async () => {
     const response = await client.iaas.api.machines.disks.delete('diskId', {
       id: 'id',

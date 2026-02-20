@@ -8,7 +8,7 @@ const client = new VraIaas({
 });
 
 describe('resource storageProfileAssociations', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveStorageProfileAssociations', async () => {
     const responsePromise =
       client.iaas.api.storageProfiles.storageProfileAssociations.retrieveStorageProfileAssociations('id');
@@ -21,7 +21,7 @@ describe('resource storageProfileAssociations', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveStorageProfileAssociations: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -37,7 +37,7 @@ describe('resource storageProfileAssociations', () => {
     ).rejects.toThrow(VraIaas.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('updateStorageProfileAssociations: only required params', async () => {
     const responsePromise =
       client.iaas.api.storageProfiles.storageProfileAssociations.updateStorageProfileAssociations('id', {
@@ -58,7 +58,7 @@ describe('resource storageProfileAssociations', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('updateStorageProfileAssociations: required and optional params', async () => {
     const response =
       await client.iaas.api.storageProfiles.storageProfileAssociations.updateStorageProfileAssociations(

@@ -8,7 +8,7 @@ const client = new VraIaas({
 });
 
 describe('resource networkProfiles', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve', async () => {
     const responsePromise = client.iaas.api.networkProfiles.retrieve('id');
     const rawResponse = await responsePromise.asResponse();
@@ -20,7 +20,7 @@ describe('resource networkProfiles', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -32,7 +32,7 @@ describe('resource networkProfiles', () => {
     ).rejects.toThrow(VraIaas.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update: only required params', async () => {
     const responsePromise = client.iaas.api.networkProfiles.update('id', {
       name: 'name',
@@ -47,7 +47,7 @@ describe('resource networkProfiles', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update: required and optional params', async () => {
     const response = await client.iaas.api.networkProfiles.update('id', {
       name: 'name',
@@ -75,7 +75,7 @@ describe('resource networkProfiles', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('delete', async () => {
     const responsePromise = client.iaas.api.networkProfiles.delete('id');
     const rawResponse = await responsePromise.asResponse();
@@ -87,7 +87,7 @@ describe('resource networkProfiles', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('delete: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -99,7 +99,7 @@ describe('resource networkProfiles', () => {
     ).rejects.toThrow(VraIaas.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('networkProfiles: only required params', async () => {
     const responsePromise = client.iaas.api.networkProfiles.networkProfiles({
       name: 'name',
@@ -114,7 +114,7 @@ describe('resource networkProfiles', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('networkProfiles: required and optional params', async () => {
     const response = await client.iaas.api.networkProfiles.networkProfiles({
       name: 'name',
@@ -142,7 +142,7 @@ describe('resource networkProfiles', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveNetworkProfiles', async () => {
     const responsePromise = client.iaas.api.networkProfiles.retrieveNetworkProfiles();
     const rawResponse = await responsePromise.asResponse();
@@ -154,7 +154,7 @@ describe('resource networkProfiles', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveNetworkProfiles: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(

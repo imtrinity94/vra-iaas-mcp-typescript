@@ -8,7 +8,7 @@ const client = new VraIaas({
 });
 
 describe('resource imageProfiles', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve', async () => {
     const responsePromise = client.iaas.api.imageProfiles.retrieve('id');
     const rawResponse = await responsePromise.asResponse();
@@ -20,7 +20,7 @@ describe('resource imageProfiles', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -32,7 +32,7 @@ describe('resource imageProfiles', () => {
     ).rejects.toThrow(VraIaas.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update: only required params', async () => {
     const responsePromise = client.iaas.api.imageProfiles.update('id', {
       imageMapping: {
@@ -50,7 +50,7 @@ describe('resource imageProfiles', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update: required and optional params', async () => {
     const response = await client.iaas.api.imageProfiles.update('id', {
       imageMapping: {
@@ -77,7 +77,7 @@ describe('resource imageProfiles', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('delete', async () => {
     const responsePromise = client.iaas.api.imageProfiles.delete('id');
     const rawResponse = await responsePromise.asResponse();
@@ -89,7 +89,7 @@ describe('resource imageProfiles', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('delete: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -101,7 +101,7 @@ describe('resource imageProfiles', () => {
     ).rejects.toThrow(VraIaas.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('imageProfiles: only required params', async () => {
     const responsePromise = client.iaas.api.imageProfiles.imageProfiles({
       imageMapping: {
@@ -120,7 +120,7 @@ describe('resource imageProfiles', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('imageProfiles: required and optional params', async () => {
     const response = await client.iaas.api.imageProfiles.imageProfiles({
       imageMapping: {
@@ -148,7 +148,7 @@ describe('resource imageProfiles', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveImageProfiles', async () => {
     const responsePromise = client.iaas.api.imageProfiles.retrieveImageProfiles();
     const rawResponse = await responsePromise.asResponse();
@@ -160,7 +160,7 @@ describe('resource imageProfiles', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveImageProfiles: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(

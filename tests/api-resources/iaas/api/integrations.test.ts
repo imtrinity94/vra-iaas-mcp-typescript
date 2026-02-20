@@ -8,7 +8,7 @@ const client = new VraIaas({
 });
 
 describe('resource integrations', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('create: only required params', async () => {
     const responsePromise = client.iaas.api.integrations.create({
       apiVersion: 'apiVersion',
@@ -25,7 +25,7 @@ describe('resource integrations', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('create: required and optional params', async () => {
     const response = await client.iaas.api.integrations.create({
       apiVersion: 'apiVersion',
@@ -46,7 +46,7 @@ describe('resource integrations', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve: only required params', async () => {
     const responsePromise = client.iaas.api.integrations.retrieve('id', { apiVersion: 'apiVersion' });
     const rawResponse = await responsePromise.asResponse();
@@ -58,7 +58,7 @@ describe('resource integrations', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve: required and optional params', async () => {
     const response = await client.iaas.api.integrations.retrieve('id', {
       apiVersion: 'apiVersion',
@@ -66,7 +66,7 @@ describe('resource integrations', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update: only required params', async () => {
     const responsePromise = client.iaas.api.integrations.update('id', {
       apiVersion: 'apiVersion',
@@ -82,7 +82,7 @@ describe('resource integrations', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update: required and optional params', async () => {
     const response = await client.iaas.api.integrations.update('id', {
       apiVersion: 'apiVersion',
@@ -101,7 +101,7 @@ describe('resource integrations', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('list: only required params', async () => {
     const responsePromise = client.iaas.api.integrations.list({ apiVersion: 'apiVersion' });
     const rawResponse = await responsePromise.asResponse();
@@ -113,7 +113,7 @@ describe('resource integrations', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('list: required and optional params', async () => {
     const response = await client.iaas.api.integrations.list({
       apiVersion: 'apiVersion',
@@ -125,7 +125,7 @@ describe('resource integrations', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('delete: only required params', async () => {
     const responsePromise = client.iaas.api.integrations.delete('id', { apiVersion: 'apiVersion' });
     const rawResponse = await responsePromise.asResponse();
@@ -137,7 +137,7 @@ describe('resource integrations', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('delete: required and optional params', async () => {
     const response = await client.iaas.api.integrations.delete('id', { apiVersion: 'apiVersion' });
   });

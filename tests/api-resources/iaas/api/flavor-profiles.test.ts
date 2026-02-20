@@ -8,7 +8,7 @@ const client = new VraIaas({
 });
 
 describe('resource flavorProfiles', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve', async () => {
     const responsePromise = client.iaas.api.flavorProfiles.retrieve('id');
     const rawResponse = await responsePromise.asResponse();
@@ -20,7 +20,7 @@ describe('resource flavorProfiles', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -32,7 +32,7 @@ describe('resource flavorProfiles', () => {
     ).rejects.toThrow(VraIaas.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update: only required params', async () => {
     const responsePromise = client.iaas.api.flavorProfiles.update('id', {
       flavorMapping: {
@@ -236,7 +236,7 @@ describe('resource flavorProfiles', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update: required and optional params', async () => {
     const response = await client.iaas.api.flavorProfiles.update('id', {
       flavorMapping: {
@@ -1564,7 +1564,7 @@ describe('resource flavorProfiles', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('delete', async () => {
     const responsePromise = client.iaas.api.flavorProfiles.delete('id');
     const rawResponse = await responsePromise.asResponse();
@@ -1576,7 +1576,7 @@ describe('resource flavorProfiles', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('delete: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -1588,7 +1588,7 @@ describe('resource flavorProfiles', () => {
     ).rejects.toThrow(VraIaas.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('flavorProfiles: only required params', async () => {
     const responsePromise = client.iaas.api.flavorProfiles.flavorProfiles({
       flavorMapping: {
@@ -1793,7 +1793,7 @@ describe('resource flavorProfiles', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('flavorProfiles: required and optional params', async () => {
     const response = await client.iaas.api.flavorProfiles.flavorProfiles({
       flavorMapping: {
@@ -3122,7 +3122,7 @@ describe('resource flavorProfiles', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveFlavorProfiles', async () => {
     const responsePromise = client.iaas.api.flavorProfiles.retrieveFlavorProfiles();
     const rawResponse = await responsePromise.asResponse();
@@ -3134,7 +3134,7 @@ describe('resource flavorProfiles', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveFlavorProfiles: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(

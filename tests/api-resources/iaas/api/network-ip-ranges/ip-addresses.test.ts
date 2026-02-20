@@ -8,7 +8,7 @@ const client = new VraIaas({
 });
 
 describe('resource ipAddresses', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve: only required params', async () => {
     const responsePromise = client.iaas.api.networkIPRanges.ipAddresses.retrieve('ipAddressId', {
       networkIPRangeId: 'networkIPRangeId',
@@ -23,7 +23,7 @@ describe('resource ipAddresses', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve: required and optional params', async () => {
     const response = await client.iaas.api.networkIPRanges.ipAddresses.retrieve('ipAddressId', {
       networkIPRangeId: 'networkIPRangeId',
@@ -31,7 +31,7 @@ describe('resource ipAddresses', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('allocate: only required params', async () => {
     const responsePromise = client.iaas.api.networkIPRanges.ipAddresses.allocate('id', {
       apiVersion: 'apiVersion',
@@ -45,7 +45,7 @@ describe('resource ipAddresses', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('allocate: required and optional params', async () => {
     const response = await client.iaas.api.networkIPRanges.ipAddresses.allocate('id', {
       apiVersion: 'apiVersion',
@@ -57,7 +57,7 @@ describe('resource ipAddresses', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('release', async () => {
     const responsePromise = client.iaas.api.networkIPRanges.ipAddresses.release('id', {});
     const rawResponse = await responsePromise.asResponse();
@@ -69,7 +69,7 @@ describe('resource ipAddresses', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveIPAddresses: only required params', async () => {
     const responsePromise = client.iaas.api.networkIPRanges.ipAddresses.retrieveIPAddresses('id', {
       apiVersion: 'apiVersion',
@@ -83,7 +83,7 @@ describe('resource ipAddresses', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveIPAddresses: required and optional params', async () => {
     const response = await client.iaas.api.networkIPRanges.ipAddresses.retrieveIPAddresses('id', {
       apiVersion: 'apiVersion',

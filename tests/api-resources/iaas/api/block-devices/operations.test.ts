@@ -8,7 +8,7 @@ const client = new VraIaas({
 });
 
 describe('resource operations', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('promote', async () => {
     const responsePromise = client.iaas.api.blockDevices.operations.promote('id');
     const rawResponse = await responsePromise.asResponse();
@@ -20,7 +20,7 @@ describe('resource operations', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('promote: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -32,7 +32,7 @@ describe('resource operations', () => {
     ).rejects.toThrow(VraIaas.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('revert: only required params', async () => {
     const responsePromise = client.iaas.api.blockDevices.operations.revert('diskId', { id: 'id' });
     const rawResponse = await responsePromise.asResponse();
@@ -44,7 +44,7 @@ describe('resource operations', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('revert: required and optional params', async () => {
     const response = await client.iaas.api.blockDevices.operations.revert('diskId', {
       id: 'id',
@@ -52,7 +52,7 @@ describe('resource operations', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('snapshots', async () => {
     const responsePromise = client.iaas.api.blockDevices.operations.snapshots('id');
     const rawResponse = await responsePromise.asResponse();
@@ -64,7 +64,7 @@ describe('resource operations', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('snapshots: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(

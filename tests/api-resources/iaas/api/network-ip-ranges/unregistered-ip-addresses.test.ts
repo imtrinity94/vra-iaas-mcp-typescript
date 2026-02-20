@@ -8,7 +8,7 @@ const client = new VraIaas({
 });
 
 describe('resource unregisteredIPAddresses', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('release', async () => {
     const responsePromise = client.iaas.api.networkIPRanges.unregisteredIPAddresses.release('id', {});
     const rawResponse = await responsePromise.asResponse();

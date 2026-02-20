@@ -8,7 +8,7 @@ const client = new VraIaas({
 });
 
 describe('resource storageProfiles', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve', async () => {
     const responsePromise = client.iaas.api.storageProfiles.retrieve('id');
     const rawResponse = await responsePromise.asResponse();
@@ -20,7 +20,7 @@ describe('resource storageProfiles', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -32,7 +32,7 @@ describe('resource storageProfiles', () => {
     ).rejects.toThrow(VraIaas.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update: only required params', async () => {
     const responsePromise = client.iaas.api.storageProfiles.update('id', {
       defaultItem: true,
@@ -48,7 +48,7 @@ describe('resource storageProfiles', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update: required and optional params', async () => {
     const response = await client.iaas.api.storageProfiles.update('id', {
       defaultItem: true,
@@ -471,7 +471,7 @@ describe('resource storageProfiles', () => {
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('delete', async () => {
     const responsePromise = client.iaas.api.storageProfiles.delete('id');
     const rawResponse = await responsePromise.asResponse();
@@ -483,7 +483,7 @@ describe('resource storageProfiles', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('delete: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -495,7 +495,7 @@ describe('resource storageProfiles', () => {
     ).rejects.toThrow(VraIaas.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveStorageProfiles', async () => {
     const responsePromise = client.iaas.api.storageProfiles.retrieveStorageProfiles();
     const rawResponse = await responsePromise.asResponse();
@@ -507,7 +507,7 @@ describe('resource storageProfiles', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveStorageProfiles: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -518,7 +518,7 @@ describe('resource storageProfiles', () => {
     ).rejects.toThrow(VraIaas.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('storageProfiles: only required params', async () => {
     const responsePromise = client.iaas.api.storageProfiles.storageProfiles({
       defaultItem: true,
@@ -534,7 +534,7 @@ describe('resource storageProfiles', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('storageProfiles: required and optional params', async () => {
     const response = await client.iaas.api.storageProfiles.storageProfiles({
       defaultItem: true,

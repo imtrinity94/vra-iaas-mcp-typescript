@@ -8,7 +8,7 @@ const client = new VraIaas({
 });
 
 describe('resource regionEnumeration', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve: only required params', async () => {
     const responsePromise = client.iaas.api.cloudAccounts.regionEnumeration.retrieve('id', {
       apiVersion: 'apiVersion',
@@ -22,14 +22,14 @@ describe('resource regionEnumeration', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve: required and optional params', async () => {
     const response = await client.iaas.api.cloudAccounts.regionEnumeration.retrieve('id', {
       apiVersion: 'apiVersion',
     });
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('regionEnumeration: only required params', async () => {
     const responsePromise = client.iaas.api.cloudAccounts.regionEnumeration.regionEnumeration({
       apiVersion: 'apiVersion',
@@ -44,7 +44,7 @@ describe('resource regionEnumeration', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('regionEnumeration: required and optional params', async () => {
     const response = await client.iaas.api.cloudAccounts.regionEnumeration.regionEnumeration({
       apiVersion: 'apiVersion',

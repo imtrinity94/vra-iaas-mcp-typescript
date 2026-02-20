@@ -8,7 +8,7 @@ const client = new VraIaas({
 });
 
 describe('resource externalNetworkIPRanges', () => {
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve', async () => {
     const responsePromise = client.iaas.api.externalNetworkIPRanges.retrieve('id');
     const rawResponse = await responsePromise.asResponse();
@@ -20,7 +20,7 @@ describe('resource externalNetworkIPRanges', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieve: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
@@ -32,7 +32,7 @@ describe('resource externalNetworkIPRanges', () => {
     ).rejects.toThrow(VraIaas.NotFoundError);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('update', async () => {
     const responsePromise = client.iaas.api.externalNetworkIPRanges.update('id', {});
     const rawResponse = await responsePromise.asResponse();
@@ -44,7 +44,7 @@ describe('resource externalNetworkIPRanges', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveExternalNetworkIPRanges', async () => {
     const responsePromise = client.iaas.api.externalNetworkIPRanges.retrieveExternalNetworkIPRanges();
     const rawResponse = await responsePromise.asResponse();
@@ -56,7 +56,7 @@ describe('resource externalNetworkIPRanges', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  // Prism tests are disabled
+  // Mock server tests are disabled
   test.skip('retrieveExternalNetworkIPRanges: request options and params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(
