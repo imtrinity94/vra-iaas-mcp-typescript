@@ -60,7 +60,7 @@ $ yarn link vra_iaas
 # With pnpm
 $ pnpm link --global
 $ cd ../my-package
-$ pnpm link -—global vra_iaas
+$ pnpm link --global vra_iaas
 ```
 
 ## Running tests
