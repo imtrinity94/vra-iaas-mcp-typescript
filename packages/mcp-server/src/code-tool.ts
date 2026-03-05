@@ -155,7 +155,7 @@ const remoteStainlessHandler = async ({
     headers: {
       ...(reqContext.stainlessApiKey && { Authorization: reqContext.stainlessApiKey }),
       'Content-Type': 'application/json',
-      client_envs: JSON.stringify({
+      'x-stainless-mcp-client-envs': JSON.stringify({
         VRA_IAAS_BEARER_TOKEN: requireValue(
           readEnv('VRA_IAAS_BEARER_TOKEN') ?? client.bearerToken,
           'set VRA_IAAS_BEARER_TOKEN environment variable or provide bearerToken client option',
