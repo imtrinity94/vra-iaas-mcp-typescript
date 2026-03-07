@@ -34,7 +34,7 @@ describe('resource operations', () => {
   // Mock server tests are disabled
   test.skip('changeSecurityGroups: only required params', async () => {
     const responsePromise = client.iaas.api.machines.operations.changeSecurityGroups('id', {
-      body_id: '9.0E49',
+      id: '9.0E49',
       _links: {},
     });
     const rawResponse = await responsePromise.asResponse();
@@ -49,7 +49,7 @@ describe('resource operations', () => {
   // Mock server tests are disabled
   test.skip('changeSecurityGroups: required and optional params', async () => {
     const response = await client.iaas.api.machines.operations.changeSecurityGroups('id', {
-      body_id: '9.0E49',
+      id: '9.0E49',
       _links: { empty: true },
       apiVersion: 'apiVersion',
       createdAt: '2012-09-27',
@@ -253,7 +253,7 @@ describe('resource operations', () => {
   // Mock server tests are disabled
   test.skip('snapshots: only required params', async () => {
     const responsePromise = client.iaas.api.machines.operations.snapshots('id', {
-      body_id: '9.0E49',
+      id: '9.0E49',
       _links: {},
     });
     const rawResponse = await responsePromise.asResponse();
@@ -268,7 +268,7 @@ describe('resource operations', () => {
   // Mock server tests are disabled
   test.skip('snapshots: required and optional params', async () => {
     const response = await client.iaas.api.machines.operations.snapshots('id', {
-      body_id: '9.0E49',
+      id: '9.0E49',
       _links: { empty: true },
       apiVersion: 'apiVersion',
       createdAt: '2012-09-27',

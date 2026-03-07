@@ -338,7 +338,7 @@ Types:
 Methods:
 
 - <code title="post /iaas/api/machines/{id}/operations/revert/{snapshotId}">client.iaas.api.machines.operations.<a href="./src/resources/iaas/api/machines/operations.ts">update</a>(snapshotID, { ...params }) -> RequestTracker</code>
-- <code title="post /iaas/api/machines/{id}/operations/change-security-groups">client.iaas.api.machines.operations.<a href="./src/resources/iaas/api/machines/operations.ts">changeSecurityGroups</a>(pathID, { ...params }) -> RequestTracker</code>
+- <code title="post /iaas/api/machines/{id}/operations/change-security-groups">client.iaas.api.machines.operations.<a href="./src/resources/iaas/api/machines/operations.ts">changeSecurityGroups</a>(id, { ...params }) -> RequestTracker</code>
 - <code title="post /iaas/api/machines/{id}/operations/power-off">client.iaas.api.machines.operations.<a href="./src/resources/iaas/api/machines/operations.ts">powerOff</a>(id, { ...params }) -> RequestTracker</code>
 - <code title="post /iaas/api/machines/{id}/operations/power-on">client.iaas.api.machines.operations.<a href="./src/resources/iaas/api/machines/operations.ts">powerOn</a>(id, { ...params }) -> RequestTracker</code>
 - <code title="post /iaas/api/machines/{id}/operations/reboot">client.iaas.api.machines.operations.<a href="./src/resources/iaas/api/machines/operations.ts">reboot</a>(id, { ...params }) -> RequestTracker</code>
@@ -346,7 +346,7 @@ Methods:
 - <code title="post /iaas/api/machines/{id}/operations/resize">client.iaas.api.machines.operations.<a href="./src/resources/iaas/api/machines/operations.ts">resize</a>(id, { ...params }) -> RequestTracker</code>
 - <code title="post /iaas/api/machines/{id}/operations/restart">client.iaas.api.machines.operations.<a href="./src/resources/iaas/api/machines/operations.ts">restart</a>(id, { ...params }) -> RequestTracker</code>
 - <code title="post /iaas/api/machines/{id}/operations/shutdown">client.iaas.api.machines.operations.<a href="./src/resources/iaas/api/machines/operations.ts">shutdown</a>(id, { ...params }) -> RequestTracker</code>
-- <code title="post /iaas/api/machines/{id}/operations/snapshots">client.iaas.api.machines.operations.<a href="./src/resources/iaas/api/machines/operations.ts">snapshots</a>(pathID, { ...params }) -> RequestTracker</code>
+- <code title="post /iaas/api/machines/{id}/operations/snapshots">client.iaas.api.machines.operations.<a href="./src/resources/iaas/api/machines/operations.ts">snapshots</a>(id, { ...params }) -> RequestTracker</code>
 - <code title="post /iaas/api/machines/{id}/operations/suspend">client.iaas.api.machines.operations.<a href="./src/resources/iaas/api/machines/operations.ts">suspend</a>(id, { ...params }) -> RequestTracker</code>
 - <code title="post /iaas/api/machines/{id}/operations/unregister">client.iaas.api.machines.operations.<a href="./src/resources/iaas/api/machines/operations.ts">unregister</a>(id, { ...params }) -> RequestTracker</code>
 

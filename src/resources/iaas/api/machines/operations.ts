@@ -42,19 +42,19 @@ export class Operations extends APIResource {
    *   await client.iaas.api.machines.operations.changeSecurityGroups(
    *     'id',
    *     {
-   *       body_id: '9.0E49',
+   *       id: '9.0E49',
    *       _links: {},
    *     },
    *   );
    * ```
    */
   changeSecurityGroups(
-    pathID: string,
+    id: string,
     params: OperationChangeSecurityGroupsParams,
     options?: RequestOptions,
   ): APIPromise<ZonesAPI.RequestTracker> {
     const { apiVersion, ...body } = params;
-    return this._client.post(path`/iaas/api/machines/${pathID}/operations/change-security-groups`, {
+    return this._client.post(path`/iaas/api/machines/${id}/operations/change-security-groups`, {
       query: { apiVersion },
       body,
       ...options,
@@ -217,19 +217,19 @@ export class Operations extends APIResource {
    *   await client.iaas.api.machines.operations.snapshots(
    *     'id',
    *     {
-   *       body_id: '9.0E49',
+   *       id: '9.0E49',
    *       _links: {},
    *     },
    *   );
    * ```
    */
   snapshots(
-    pathID: string,
+    id: string,
     params: OperationSnapshotsParams,
     options?: RequestOptions,
   ): APIPromise<ZonesAPI.RequestTracker> {
     const { apiVersion, ...body } = params;
-    return this._client.post(path`/iaas/api/machines/${pathID}/operations/snapshots`, {
+    return this._client.post(path`/iaas/api/machines/${id}/operations/snapshots`, {
       query: { apiVersion },
       body,
       ...options,
@@ -350,7 +350,7 @@ export interface OperationChangeSecurityGroupsParams {
   /**
    * Body param: The id of this resource instance
    */
-  body_id: string;
+  id: string;
 
   /**
    * Body param: HATEOAS of the entity
@@ -523,7 +523,7 @@ export interface OperationSnapshotsParams {
   /**
    * Body param: The id of this resource instance
    */
-  body_id: string;
+  id: string;
 
   /**
    * Body param: HATEOAS of the entity
