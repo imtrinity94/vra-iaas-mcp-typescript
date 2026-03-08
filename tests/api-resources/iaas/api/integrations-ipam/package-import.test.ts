@@ -29,7 +29,7 @@ describe('resource packageImport', () => {
       'Tus-Resumable': '1.0.0',
       'Upload-Offset': 'Upload-Offset',
       apiVersion: 'apiVersion',
-      body: await toFile(Buffer.from('# my file contents'), 'README.md'),
+      body: await toFile(Buffer.from('Example data'), 'README.md'),
     });
   });
 
