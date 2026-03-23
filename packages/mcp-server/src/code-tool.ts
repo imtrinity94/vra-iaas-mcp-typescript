@@ -73,19 +73,24 @@ export function codeTool(): McpTool {
         `${res.status}: ${res.statusText
         } error when trying to contact Code Tool server. Details: ${await res.text()}`,
       );
-    }
 
-    const { is_error, result, log_lines, err_lines } = (await res.json()) as WorkerOutput;
-    const hasLogs = log_lines.length > 0 || err_lines.length > 0;
-    const output = {
-      result,
-      ...(log_lines.length > 0 && { log_lines }),
-      ...(err_lines.length > 0 && { err_lines }),
-    };
-    if (is_error) {
-      return asErrorResult(typeof result === 'string' && !hasLogs ? result : JSON.stringify(output, null, 2));
+      const result = await execute(client, capturedConsole);
+
+      const output = {
+        result,
+        ...(log_lines.length > 0 && { log_lines }),
+        ...(err_lines.length > 0 && { err_lines }),
+      };
+
+      return asTextContentResult(output);
+    } catch (e: any) {
+      const output = {
+        result: e.message || String(e),
+        ...(log_lines.length > 0 && { log_lines }),
+        ...(err_lines.length > 0 && { err_lines }),
+      };
+      return asErrorResult(JSON.stringify(output, null, 2));
     }
-    return asTextContentResult(output);
   };
 
   return { metadata, tool, handler };
