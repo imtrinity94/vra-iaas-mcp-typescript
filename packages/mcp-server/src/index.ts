@@ -5,8 +5,13 @@ import { McpOptions, parseCLIOptions } from './options';
 import { launchStdioServer } from './stdio';
 import { launchStreamableHTTPServer } from './http';
 import type { McpTool } from './types';
+import { ensureBearerToken } from './auth';
+
+process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 
 async function main() {
+  await ensureBearerToken();
+
   const options = parseOptionsOrError();
 
   const selectedTools = await selectToolsOrError(options);

@@ -42,12 +42,12 @@ export function initMcpServer(params: {
 
   const logAtLevel =
     (level: 'debug' | 'info' | 'warning' | 'error') =>
-    (message: string, ...rest: unknown[]) => {
-      void server.sendLoggingMessage({
-        level,
-        data: { message, rest },
-      });
-    };
+      (message: string, ...rest: unknown[]) => {
+        void server.sendLoggingMessage({
+          level,
+          data: { message, rest },
+        });
+      };
   const logger = {
     debug: logAtLevel('debug'),
     info: logAtLevel('info'),
@@ -57,6 +57,7 @@ export function initMcpServer(params: {
 
   let client = new VraIaas({
     logger,
+    baseURL: process.env['VRA_FQDN'] ? `https://${process.env['VRA_FQDN']}` : undefined,
     ...params.clientOptions,
     defaultHeaders: {
       ...params.clientOptions?.defaultHeaders,

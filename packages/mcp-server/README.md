@@ -1,5 +1,26 @@
 # Vra Iaas TypeScript MCP Server
 
+This directory contains the Model Context Protocol (MCP) server for vRealize Automation (vRA) IaaS. This server essentially acts as a bridge between an AI Assistant (like Claude Desktop) and your vRA appliance, allowing you to use natural language to execute programmatic vRA tasks, gather resources, and build automations.
+
+## Quick Start (Claude Desktop)
+
+This server supports auto-authentication. Instead of manually providing expiring Bearer tokens, the server will login to your vRA appliance with your credentials on startup, capture the `cspAuthToken`, and seamlessly inject it into your requests. 
+
+All self-signed certificates are automatically bypassed.
+
+### 1. Build the Integration
+
+If you have just cloned the repository, or if you modify any `.ts` files inside this package, you must build the TypeScript SDK into executable JavaScript bundles:
+
+```bash
+# From the root of the repository, execute the build script (requires bash):
+./scripts/build
+```
+> *(On Windows, you can achieve this by running `& "C:\Program Files\Git\bin\bash.exe" ./scripts/build` from PowerShell)*
+
+### 2. Configure Claude Desktop
+
+To connect Claude to this server, edit your Claude Desktop configuration file (typically located at `%APPDATA%\Claude\claude_desktop_config.json` on Windows or `~/Library/Application Support/Claude/claude_desktop_config.json` on MacOS):
 It is generated with [Stainless](https://www.stainless.com/).
 
 ## Installation
@@ -31,9 +52,16 @@ For clients with a configuration JSON, it might look something like this:
 {
   "mcpServers": {
     "vra_iaas_api": {
+      "command": "node",
+      "args": [
+        "C:\\Absolute\\Path\\To\\vra-iaas-mcp-typescript\\packages\\mcp-server\\dist\\index.js"
+      ],
       "command": "npx",
       "args": ["-y", "vra_iaas-mcp", "--base-url", "https://vra.example.com", "--bearer-token", "My Bearer Token"],
       "env": {
+        "VRA_FQDN": "your-vra-appliance.local",
+        "VRA_USERNAME": "your_username",
+        "VRA_PASSWORD": "your_password"
         "VRA_IAAS_BASE_URL": "https://vra.example.com",
         "VRA_IAAS_BEARER_TOKEN": "My Bearer Token"
       }
@@ -65,43 +93,24 @@ environment variables in Claude Code's `.claude.json`, which can be found in you
 claude mcp add vra_iaas_mcp_api --env VRA_IAAS_BEARER_TOKEN="Your VRA_IAAS_BEARER_TOKEN here." --transport sse https://vra-iaas.stlmcp.com/sse
 ```
 
-## Code Mode
+> **Important**: You must provide the **Absolute Path** to the `packages/mcp-server/dist/index.js` file built in step 1.
 
-This MCP server is built on the "Code Mode" tool scheme. In this MCP Server,
-your agent will write code against the TypeScript SDK, which will then be executed in an
-isolated sandbox. To accomplish this, the server will expose two tools to your agent:
+### 3. Usage inside Claude
 
-- The first tool is a docs search tool, which can be used to generically query for
-  documentation about your API/SDK.
+Force restart Claude Desktop (completely quit from your system tray and relaunch).
 
-- The second tool is a code tool, where the agent can write code against the TypeScript SDK.
-  The code will be executed in a sandbox environment without web or filesystem access. Then,
-  anything the code returns or prints will be returned to the agent as the result of the
-  tool call.
+Start a new chat and ask Claude things like:
+- *"List all of my vRA Storage Profiles."*
+- *"Query the API docs and write a script to deploy a new virtual machine."*
+- *"Show me my most recent deployments."*
 
-Using this scheme, agents are capable of performing very complex tasks deterministically
-and repeatably.
+Claude will use the "Code Tool" underneath to execute pure TypeScript code against this SDK in a secure sandbox, returning the live results directly to you in natural language!
 
-## Running remotely
+---
 
-Launching the client with `--transport=http` launches the server as a remote server using Streamable HTTP transport. The `--port` setting can choose the port it will run on, and the `--socket` setting allows it to run on a Unix socket.
+## Code Mode Documentation
 
-Authorization can be provided via the following headers:
-| Header | Equivalent client option | Security scheme |
-| ------------------------- | ------------------------ | --------------- |
-| `x-vra-iaas-bearer-token` | `bearerToken` | Authorization |
+This MCP server is built on the "Code Mode" tool scheme. In this MCP Server, your agent will write code against the TypeScript SDK, which will then be executed in an isolated sandbox. To accomplish this, the server exposes two tools to your agent:
 
-A configuration JSON for this server might look like this, assuming the server is hosted at `http://localhost:3000`:
-
-```json
-{
-  "mcpServers": {
-    "vra_iaas_api": {
-      "url": "http://localhost:3000",
-      "headers": {
-        "x-vra-iaas-bearer-token": "My Bearer Token"
-      }
-    }
-  }
-}
-```
+- **Docs Search Tool**: Can be used to generically query for documentation about your API.
+- **Execute Code Tool**: An execution environment where the agent can write TypeScript code against the SDK. The code is executed in a sandbox without web or filesystem access. Anything the code returns or prints is returned to the agent.
