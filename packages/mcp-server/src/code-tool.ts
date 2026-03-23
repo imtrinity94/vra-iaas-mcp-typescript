@@ -2,29 +2,6 @@
 
 import { McpTool, Metadata, ToolCallResult, asErrorResult, asTextContentResult } from './types';
 import { Tool } from '@modelcontextprotocol/sdk/types.js';
-import { readEnv } from './server';
-import { WorkerInput, WorkerOutput } from './code-tool-types';
-import { VraIaas } from 'vra_iaas';
-
-const prompt = `Runs JavaScript code to interact with the Vra Iaas API.
-
-You are a skilled programmer writing code to interface with the service.
-Define an async function named "run" that takes a single parameter of an initialized SDK client and it will be run.
-For example:
-
-\`\`\`
-async function run(client) {
-  const storageProfile = await client.iaas.api.storageProfiles.retrieve('REPLACE_ME');
-
-  console.log(storageProfile.id);
-}
-\`\`\`
-
-You will be returned anything that your function returns, plus the results of any console.log statements.
-Do not add try-catch blocks for single API calls. The tool will handle errors for you.
-Do not add comments unless necessary for generating better code.
-Code will run in a container, and cannot interact with the network outside of the given SDK client.
-Variables will not persist between calls, so make sure to return or log any data you might need later.`;
 
 /**
  * A tool that runs code against a copy of the SDK.
@@ -39,39 +16,30 @@ export function codeTool(): McpTool {
   const metadata: Metadata = { resource: 'all', operation: 'write', tags: [] };
   const tool: Tool = {
     name: 'execute',
-    description: prompt,
+    description:
+      'Runs JavaScript code to interact with the API.\n\nYou are a skilled programmer writing code to interface with the service.\nDefine an async function named "run" that takes a single parameter of an initialized SDK client and it will be run.\nWrite code within this template:\n\n```\nasync function run(client) {\n  // Fill this out\n}\n```\n\nYou will be returned anything that your function returns, plus the results of any console.log statements.\nIf any code triggers an error, the tool will return an error response, so you do not need to add error handling unless you want to output something more helpful than the raw error.\nIt is not necessary to add comments to code, unless by adding those comments you believe that you can generate better code.\nAny variables you define won\'t live between successive uses of this call, so make sure to return or log any data you might need later.',
     inputSchema: { type: 'object', properties: { code: { type: 'string' } } },
   };
-  const handler = async (client: VraIaas, args: any): Promise<ToolCallResult> => {
+  const handler = async (client: any, args: any): Promise<ToolCallResult> => {
     const code = args.code as string;
+    const log_lines: string[] = [];
+    const err_lines: string[] = [];
 
-    // this is not required, but passing a Stainless API key for the matching project_name
-    // will allow you to run code-mode queries against non-published versions of your SDK.
-    const stainlessAPIKey = readEnv('STAINLESS_API_KEY');
-    const codeModeEndpoint =
-      readEnv('CODE_MODE_ENDPOINT_URL') ?? 'https://api.stainless.com/api/ai/code-tool';
+    const capturedConsole = {
+      log: (...args: any[]) => log_lines.push(args.map(String).join(' ')),
+      info: (...args: any[]) => log_lines.push(args.map(String).join(' ')),
+      warn: (...args: any[]) => log_lines.push('WARN: ' + args.map(String).join(' ')),
+      error: (...args: any[]) => err_lines.push('ERROR: ' + args.map(String).join(' ')),
+    };
 
-    const res = await fetch(codeModeEndpoint, {
-      method: 'POST',
-      headers: {
-        ...(stainlessAPIKey && { Authorization: stainlessAPIKey }),
-        'Content-Type': 'application/json',
-        client_envs: JSON.stringify({
-          VRA_IAAS_BEARER_TOKEN: client.bearerToken,
-          VRA_IAAS_BASE_URL: client.baseURL,
-        }),
-      },
-      body: JSON.stringify({
-        project_name: 'vra_iaas',
-        code,
-        client_opts: {},
-      } satisfies WorkerInput),
-    });
-
-    if (!res.ok) {
-      throw new Error(
-        `${res.status}: ${res.statusText
-        } error when trying to contact Code Tool server. Details: ${await res.text()}`,
+    try {
+      const execute = new Function(
+        'client',
+        'console',
+        `
+            ${code}
+            ;return run(client);
+        `,
       );
 
       const result = await execute(client, capturedConsole);
