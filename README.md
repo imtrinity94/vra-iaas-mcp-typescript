@@ -1,4 +1,4 @@
-# Vra Iaas TypeScript API Library
+# Aria Automation IaaS TypeScript based MCP tool
 
 [![NPM version](<https://img.shields.io/npm/v/vra_iaas.svg?label=npm%20(stable)>)](https://npmjs.org/package/vra_iaas) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/vra_iaas)
 
@@ -7,6 +7,8 @@ This library provides convenient access to the Vra Iaas REST API from server-sid
 The REST API documentation can be found on [www.vmware.com](https://www.vmware.com/). The full API of this library can be found in [api.md](api.md).
 
 It is generated with [Stainless](https://www.stainless.com/).
+
+[![Ask DeepWiki](https://deepwiki.com/badge.svg)](https://deepwiki.com/imtrinity94/vra-iaas-mcp-typescript)
 
 ## MCP Server
 
