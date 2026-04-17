@@ -1,0 +1,233 @@
+{
+  "repo_notes": [
+    {
+      "content": ""
+    }
+  ],
+  "pages": [
+    {
+      "title": "Overview",
+      "purpose": "High-level introduction to the Aria Automation (aka vRA) IaaS TypeScript SDK and MCP Server monorepo — what it does, how the two packages relate, and where to start. Links to child pages for details.",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Getting Started",
+      "purpose": "Step-by-step guide for installing the SDK, configuring credentials, running the first API call, and setting up the MCP server with Claude Desktop. Covers environment variables, build steps, and the examples/ directory.",
+      "parent": "Overview",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Repository Structure",
+      "purpose": "Explains the monorepo layout: root SDK package vs. packages/mcp-server sub-package, the src/ resource tree, tests/, scripts/, and how the two packages depend on each other.",
+      "parent": "Overview",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "vRA IaaS SDK — Core Architecture",
+      "purpose": "Overview of the generated TypeScript SDK: the VraIaas client class, request pipeline, error handling, and internal utilities. Links to child pages for each major subsystem.",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "vRA IaaS Client & Request Pipeline",
+      "purpose": "Deep dive into src/client.ts — ClientOptions, authentication (bearerToken), baseURL resolution, retry logic with exponential backoff, timeout handling, fetch abstraction, and the APIPromise class (src/core/api-promise.ts).",
+      "parent": "vRA IaaS SDK — Core Architecture",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Error Handling",
+      "purpose": "Documents the error class hierarchy in src/core/error.ts: VraIaasError → APIError → BadRequestError, AuthenticationError, PermissionDeniedError, NotFoundError, RateLimitError, InternalServerError, APIConnectionError, and APIConnectionTimeoutError. Explains how errors are generated and caught.",
+      "parent": "VraIaas SDK — Core Architecture",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Internal Utilities & Helpers",
+      "purpose": "Covers the src/internal/ layer: request-options, headers, parse, detect-platform, shims, uploads, and the utils/ sub-directory (env, log, path, sleep, uuid, values, bytes, base64). Explains how these support the client without being part of the public API.",
+      "parent": "VraIaas SDK — Core Architecture",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "IaaS API Resources",
+      "purpose": "Overview of the 266-endpoint resource tree under src/resources/iaas/api/. Introduces the resource categories and links to child pages for each domain area.",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Cloud Accounts",
+      "purpose": "Documents the cloud account resources: CloudAccountsAws, CloudAccountsAzure, CloudAccountsGcp, CloudAccountsVsphere, CloudAccountsNsxT, CloudAccountsNsxV, CloudAccountsVcf, CloudAccountsVmc, CloudAccountsAvilb. Covers CRUD operations and provider-specific enumeration methods (region, image).",
+      "parent": "IaaS API Resources",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Compute & Machines",
+      "purpose": "Documents the Machines resource (src/resources/iaas/api/machines/) including sub-resources: Disks, NetworkInterfaces, Operations, Snapshots. Also covers Zones, Regions, FabricComputes, ComputeGateways, ComputeNats, and FlavorProfiles.",
+      "parent": "IaaS API Resources",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Networking",
+      "purpose": "Documents network-related resources: Networks, NetworkProfiles, NetworkDomains, NetworkIPRanges, ExternalIPBlocks, ExternalNetworkIPRanges, FabricNetworks, FabricNetworksVsphere, SecurityGroups, LoadBalancers, and Integrations (IPAM).",
+      "parent": "IaaS API Resources",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Storage",
+      "purpose": "Documents storage resources: StorageProfiles (generic), StorageProfilesAws, StorageProfilesAzure, StorageProfilesGcp, StorageProfilesVsphere, BlockDevices, FabricVsphereDatastores, FabricVsphereStoragePolicies, FabricAzureStorageAccounts. Explains storage profile hierarchy and cloud-specific variants.",
+      "parent": "IaaS API Resources",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Projects, Deployments & Governance",
+      "purpose": "Documents Projects (with sub-resources Zones), Deployments, Tags, ImageProfiles, Naming, DataCollectors, ConfigurationProperties, RequestTracker, and the top-level API utility methods (login, about, event logs, request graph).",
+      "parent": "IaaS API Resources",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "MCP Server",
+      "purpose": "Overview of the packages/mcp-server sub-package: what it is, how it wraps the vRA IaaS SDK for AI assistant consumption, and links to child pages covering each component.",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Server Initialization & Transports",
+      "purpose": "Covers packages/mcp-server/src/index.ts (main entrypoint, startup sequence), server.ts (initMcpServer, newMcpServer, tool registry, logging bridge), stdio.ts (launchStdioServer), and http.ts (launchStreamableHTTPServer with Express). Explains transport selection logic.",
+      "parent": "MCP Server",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Authentication & Configuration",
+      "purpose": "Documents auth.ts (ensureBearerToken — auto-login via VRA_FQDN/VRA_USERNAME/VRA_PASSWORD, cspAuthToken capture), options.ts (CLIOptions, McpOptions, parseCLIOptions via yargs), and headers.ts (parseAuthHeaders for HTTP transport). Covers NODE_TLS_REJECT_UNAUTHORIZED behavior.",
+      "parent": "MCP Server",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "MCP Tools — Execute & Docs Search",
+      "purpose": "Deep dive into the two MCP tools: code-tool.ts (the 'execute' meta-tool — Function constructor sandbox, console capture, run(client) pattern, design rationale) and docs-search-tool.ts (search_docs tool, Stainless docs search API). Covers types.ts (McpTool, ToolCallResult, HandlerFunction, asTextContentResult, asErrorResult).",
+      "parent": "MCP Server",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Docker & Deployment",
+      "purpose": "Covers the Dockerfile (multi-stage build, non-root user, stdio default), .dockerignore, manifest.json (DXT manifest for MCP host registration, user_config schema), and how to run the server as a container or registered MCP extension.",
+      "parent": "MCP Server",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Build System & Tooling",
+      "purpose": "Overview of the build pipeline, scripts, and development tooling. Links to child pages for the SDK build and CI/CD.",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "SDK Build Pipeline",
+      "purpose": "Explains scripts/build (tsc-multi dual CJS/ESM compilation, postprocess-files, fix-index-exports, make-dist-package-json), scripts/utils/ helpers (check-version, git-swap, attw-report, check-is-in-git-install), the prepare lifecycle hook, and how dist/ is structured for publishing.",
+      "parent": "Build System & Tooling",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Testing",
+      "purpose": "Documents the Jest-based test suite in tests/api-resources/iaas/api/ — one test file per resource, Prism mock server usage (TEST_API_BASE_URL), asResponse/withResponse patterns, and how to run tests locally with scripts/test and scripts/mock.",
+      "parent": "Build System & Tooling",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "CI/CD & Release Automation",
+      "purpose": "Covers .github/workflows/ci.yml (lint, build, test jobs), publish-npm.yml (NPM publishing), release-doctor.yml (pre-release checks), bin/check-release-environment, release-please-config.json, .release-please-manifest.json, and the Conventional Commits → SemVer version bump lifecycle.",
+      "parent": "Build System & Tooling",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    },
+    {
+      "title": "Glossary",
+      "purpose": "Definitions of all codebase-specific terms, abbreviations, and domain concepts an onboarding engineer needs to know, with code pointers.",
+      "page_notes": [
+        {
+          "content": ""
+        }
+      ]
+    }
+  ]
+}
