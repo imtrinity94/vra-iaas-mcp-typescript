@@ -12,11 +12,13 @@ PACKAGE_NAME="$(jq -r -e '.name' ./package.json)"
 VERSION="$(jq -r -e '.version' ./package.json)"
 
 # Verify npm authentication before trying to publish.
-NPM_USER="$(npm whoami 2>/dev/null || true)"
-if [[ -z "$NPM_USER" ]]; then
+if ! NPM_WHOAMI_OUTPUT="$(npm whoami 2>&1)"; then
   echo "ERROR: npm authentication failed. Check that NPM_TOKEN is valid and has publish permissions."
+  echo "npm whoami output:"
+  echo "$NPM_WHOAMI_OUTPUT"
   exit 1
 fi
+NPM_USER="$NPM_WHOAMI_OUTPUT"
 echo "Authenticated to npm as: $NPM_USER"
 
 # Get latest version from npm
