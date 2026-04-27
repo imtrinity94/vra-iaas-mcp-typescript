@@ -1,6 +1,6 @@
 {
   "name": "vra_iaas-mcp",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "The official MCP Server for the Vra Iaas API",
   "author": "Vra Iaas <sales@vmware.com>",
   "types": "dist/index.d.ts",

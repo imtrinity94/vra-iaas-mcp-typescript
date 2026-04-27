@@ -18,17 +18,22 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
+      id-token: write
 
     steps:
       - uses: actions/checkout@v4
 
       - name: Set up Node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '22'
+          cache: 'pnpm'
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Set up pnpm
         uses: pnpm/action-setup@v4
+        with:
+          version: '10.24.0'
 
       - name: Install dependencies
         run: |
@@ -36,6 +41,10 @@ jobs:
 
       - name: Publish to NPM
         run: |
+          if [ -z "${NPM_TOKEN}" ]; then
+            echo "NPM token is not configured. Set either VRA_IAAS_NPM_TOKEN or NPM_TOKEN secret."
+            exit 1
+          fi
           if [ -n "${{ github.event.inputs.path }}" ]; then
             PATHS_RELEASED='[\"${{ github.event.inputs.path }}\"]'
           else
@@ -44,6 +53,7 @@ jobs:
           pnpm tsn scripts/publish-packages.ts "{ \"paths_released\": \"$PATHS_RELEASED\" }"
         env:
           NPM_TOKEN: ${{ secrets.VRA_IAAS_NPM_TOKEN || secrets.NPM_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.VRA_IAAS_NPM_TOKEN || secrets.NPM_TOKEN }}
 
       - name: Upload MCP Server DXT GitHub release asset
         run: |

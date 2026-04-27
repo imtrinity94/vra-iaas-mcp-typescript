@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.0.5 (2026-04-27)
+
+Full Changelog: [v0.0.4...v0.0.5](https://github.com/imtrinity94/vra-iaas-mcp-typescript/compare/v0.0.4...v0.0.5)
+
+### Features
+
+* **auth:** add Local Process and Username/Password auth flow updates ([32d242f](https://github.com/imtrinity94/vra-iaas-mcp-typescript/commit/32d242fc223f8abdd03f07086a514a1b2e3c5f70))
+* **auth:** add automatic auth generation and TLS bypass support for vRA integration ([371374b](https://github.com/imtrinity94/vra-iaas-mcp-typescript/commit/371374b1487d3c743d8d67cbeb7be3baa8271dd5))
+
+### Fixes
+
+* **ci:** fix npm publish workflow authentication and tooling setup
+* **mcp:** update code tool inputs handling ([2c3df51](https://github.com/imtrinity94/vra-iaas-mcp-typescript/commit/2c3df51cfa4e371ad482aaf6f894fa2f1c649f70))
+
 ## 0.0.4 (2026-01-09)
 
 Full Changelog: [v0.0.3...v0.0.4](https://github.com/imtrinity94/vra-iaas-mcp-typescript/compare/v0.0.3...v0.0.4)
