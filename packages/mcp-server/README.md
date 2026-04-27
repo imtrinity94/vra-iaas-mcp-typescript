@@ -2,56 +2,76 @@
 
 This directory contains the Model Context Protocol (MCP) server for vRealize Automation (vRA) IaaS. This server acts as a bridge between an AI Assistant (like Claude Desktop) and your vRA appliance, allowing you to use natural language to execute programmatic vRA tasks, gather resources, and build automations.
 
-## Quick Start (Claude Desktop)
+## Standard Configuration (All IDEs)
 
-This codebase includes custom enhancements to support auto-authentication natively. Instead of manually providing expiring Bearer tokens, the server will login to your vRA appliance with your credentials on startup, capture the `cspAuthToken`, and seamlessly inject it into your requests. 
+This server supports a standardized credential-based setup for all MCP clients:
 
-All self-signed certificates are automatically bypassed via `NODE_TLS_REJECT_UNAUTHORIZED='0'`.
+- `VRA_FQDN`
+- `VRA_USERNAME`
+- `VRA_PASSWORD`
 
-### 1. Build the Integration
+The server exchanges these credentials for an IaaS bearer token on startup.
 
-If you have just cloned the repository, or if you modify any `.ts` files inside this package, you must build the TypeScript SDK into executable JavaScript bundles.
-
-From the root of the repository, execute the build script (requires bash):
-```bash
-./scripts/build
-```
-> *(On Windows, you can achieve this by running `& "C:\Program Files\Git\bin\bash.exe" ./scripts/build` from PowerShell)*
-
-### 2. Configure Claude Desktop
-
-To connect Claude to this server, edit your Claude Desktop configuration file (typically located at `%APPDATA%\Claude\claude_desktop_config.json` on Windows or `~/Library/Application Support/Claude/claude_desktop_config.json` on MacOS):
+### Common MCP config snippet
 
 ```json
 {
   "mcpServers": {
-    "vra_iaas_api": {
-      "command": "node",
-      "args": [
-        "C:\\Absolute\\Path\\To\\vra-iaas-mcp-typescript\\packages\\mcp-server\\dist\\index.js"
-      ],
+    "vra_iaas-mcp": {
+      "command": "npx",
+      "args": ["-y", "vra_iaas-mcp"],
       "env": {
-        "VRA_FQDN": "your-vra-appliance.local",
-        "VRA_USERNAME": "your_username",
-        "VRA_PASSWORD": "your_password"
+        "VRA_FQDN": "vra.example.local",
+        "VRA_USERNAME": "your-username",
+        "VRA_PASSWORD": "your-password"
       }
     }
   }
 }
 ```
 
-> **Important Note**: You **must** provide the **Absolute Path** to the `packages/mcp-server/dist/index.js` file built in step 1. Using `npx -y vra_iaas-mcp` will download a remote generic copy of the API which does NOT contain the local authentication functionality!
+### Client locations
 
-### 3. Usage inside Claude
+- **Cursor**: global MCP config (`~/.cursor/mcp.json` on macOS/Linux, `%USERPROFILE%\\.cursor\\mcp.json` on Windows)
+- **VS Code**: MCP settings UI or `settings.json` MCP block
+- **Claude Desktop**: `%APPDATA%\\Claude\\claude_desktop_config.json` (Windows) or `~/Library/Application Support/Claude/claude_desktop_config.json` (macOS)
+- **Antigravity**: MCP config file/UI using the same `mcpServers` JSON shape
 
-Restart Claude Desktop (completely quit from your system tray to ensure the MCP Server process is killed, then relaunch).
+### Local repository development
 
-Start a new chat and ask Claude things like:
-- *"List all of my vRA Storage Profiles."*
-- *"Query the API docs and write a script to deploy a new virtual machine."*
-- *"Show me my most recent deployments."*
+If you are working from source, build from the repository root:
 
-Claude will use the "Code Tool" underneath to execute pure TypeScript code against this SDK in a secure sandbox, returning the live results directly to you in natural language!
+```bash
+./scripts/build
+```
+
+Then point your MCP client to the local entrypoint:
+
+```json
+{
+  "mcpServers": {
+    "vra_iaas-mcp-local": {
+      "command": "node",
+      "args": [
+        "C:\\Absolute\\Path\\To\\vra-iaas-mcp-typescript\\packages\\mcp-server\\dist\\index.js"
+      ],
+      "env": {
+        "VRA_FQDN": "vra.example.local",
+        "VRA_USERNAME": "your-username",
+        "VRA_PASSWORD": "your-password"
+      }
+    }
+  }
+}
+```
+
+For self-signed certificates in lab environments, add:
+
+```json
+{
+  "NODE_TLS_REJECT_UNAUTHORIZED": "0"
+}
+```
 
 ---
 

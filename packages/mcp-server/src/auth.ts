@@ -1,58 +1,74 @@
-import * as https from 'https';
+const readFirstEnv = (...keys: string[]) => {
+  for (const key of keys) {
+    const value = process.env[key]?.trim();
+    if (value) return value;
+  }
+  return undefined;
+};
+
+const normalizeBaseURL = () => {
+  const baseURL = readFirstEnv('VRA_BASE_URL', 'VRA_IAAS_BASE_URL');
+  if (baseURL) return baseURL.replace(/\/+$/, '');
+
+  const fqdn = readFirstEnv('VRA_FQDN', 'VRA_IAAS_FQDN');
+  if (!fqdn) return undefined;
+
+  if (fqdn.startsWith('http://') || fqdn.startsWith('https://')) {
+    return fqdn.replace(/\/+$/, '');
+  }
+  return `https://${fqdn}`.replace(/\/+$/, '');
+};
 
 export async function ensureBearerToken() {
-    if (process.env['VRA_IAAS_BEARER_TOKEN']) {
-        // Already provided explicitly
-        return;
-    }
+  if (process.env['VRA_IAAS_BEARER_TOKEN']) {
+    return;
+  }
 
-    const fqdn = process.env['VRA_FQDN'];
-    const username = process.env['VRA_USERNAME'];
-    const password = process.env['VRA_PASSWORD'];
+  const baseURL = normalizeBaseURL();
+  const username = readFirstEnv('VRA_USERNAME', 'VRA_IAAS_USERNAME');
+  const password = readFirstEnv('VRA_PASSWORD', 'VRA_IAAS_PASSWORD');
 
-    if (!fqdn || !username || !password) {
-        console.error("VRA_FQDN, VRA_USERNAME, and VRA_PASSWORD must be provided if VRA_IAAS_BEARER_TOKEN is omitted.");
-        return;
-    }
+  if (!baseURL || !username || !password) {
+    console.error(
+      'Set VRA_FQDN, VRA_USERNAME, and VRA_PASSWORD (or provide VRA_IAAS_BEARER_TOKEN).',
+    );
+    return;
+  }
 
-    const bodyData = JSON.stringify({ username, password });
+  const loginRes = await fetch(`${baseURL}/csp/gateway/am/api/login?access_token`, {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({ username, password }),
+  });
 
-    return new Promise<void>((resolve, reject) => {
-        const req = https.request(
-            `https://${fqdn}/csp/gateway/am/api/login`,
-            {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Content-Length': Buffer.byteLength(bodyData),
-                },
-                rejectUnauthorized: false, // Accept SSL certificate like the snippet
-            },
-            (res) => {
-                let data = '';
-                res.on('data', (chunk) => {
-                    data += chunk;
-                });
+  const loginBody = await loginRes.text();
+  if (!loginRes.ok) {
+    throw new Error(`vRA CSP login failed (${loginRes.status}): ${loginBody}`);
+  }
 
-                res.on('end', () => {
-                    if (res.statusCode && res.statusCode >= 200 && res.statusCode < 300) {
-                        try {
-                            const responseContent = JSON.parse(data);
-                            process.env['VRA_IAAS_BEARER_TOKEN'] = responseContent.cspAuthToken;
-                            console.error("Successfully generated new bearer token.");
-                            resolve();
-                        } catch (e) {
-                            reject(new Error("Failed to parse JSON token response: " + data));
-                        }
-                    } else {
-                        reject(new Error("Login request failed with status: " + res.statusCode + " - " + data));
-                    }
-                });
-            }
-        );
+  const parsedLogin = JSON.parse(loginBody);
+  const refreshToken = parsedLogin?.refresh_token || parsedLogin?.access_token;
+  if (!refreshToken) {
+    throw new Error('vRA CSP login did not return refresh_token/access_token');
+  }
 
-        req.on('error', (e) => reject(e));
-        req.write(bodyData);
-        req.end();
-    });
+  const iaasRes = await fetch(`${baseURL}/iaas/api/login`, {
+    method: 'POST',
+    headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({ refreshToken }),
+  });
+  const iaasBody = await iaasRes.text();
+  if (!iaasRes.ok) {
+    throw new Error(`vRA IaaS login failed (${iaasRes.status}): ${iaasBody}`);
+  }
+
+  const parsedIaas = JSON.parse(iaasBody);
+  const bearerToken = parsedIaas?.token || parsedIaas?.access_token || parsedIaas?.cspAuthToken;
+  if (!bearerToken) {
+    throw new Error('vRA IaaS login did not return a bearer token');
+  }
+
+  process.env['VRA_IAAS_BEARER_TOKEN'] = bearerToken;
+  process.env['VRA_IAAS_BASE_URL'] = baseURL;
+  console.error('Successfully generated vRA IaaS bearer token from credentials.');
 }

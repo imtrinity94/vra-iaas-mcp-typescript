@@ -55,9 +55,19 @@ export function initMcpServer(params: {
     error: logAtLevel('error'),
   };
 
+  const baseURLFromEnv = readEnv('VRA_BASE_URL') || readEnv('VRA_IAAS_BASE_URL');
+  const fqdnFromEnv = readEnv('VRA_FQDN') || readEnv('VRA_IAAS_FQDN');
+  const resolvedBaseURL =
+    baseURLFromEnv ||
+    (fqdnFromEnv ?
+      (fqdnFromEnv.startsWith('http://') || fqdnFromEnv.startsWith('https://') ?
+        fqdnFromEnv
+      : `https://${fqdnFromEnv}`)
+    : undefined);
+
   let client = new VraIaas({
     logger,
-    baseURL: process.env['VRA_FQDN'] ? `https://${process.env['VRA_FQDN']}` : undefined,
+    baseURL: resolvedBaseURL,
     ...params.clientOptions,
     defaultHeaders: {
       ...params.clientOptions?.defaultHeaders,

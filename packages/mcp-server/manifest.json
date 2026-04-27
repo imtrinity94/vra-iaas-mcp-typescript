@@ -22,21 +22,28 @@
         "${__dirname}/index.js"
       ],
       "env": {
-        "VRA_IAAS_BEARER_TOKEN": "${user_config.VRA_IAAS_BEARER_TOKEN}",
-        "VRA_IAAS_BASE_URL": "${user_config.VRA_IAAS_BASE_URL}"
+        "VRA_FQDN": "${user_config.VRA_FQDN}",
+        "VRA_USERNAME": "${user_config.VRA_USERNAME}",
+        "VRA_PASSWORD": "${user_config.VRA_PASSWORD}"
       }
     }
   },
   "user_config": {
-    "VRA_IAAS_BEARER_TOKEN": {
-      "title": "bearer_token",
-      "description": "The bearer token for authentication",
+    "VRA_FQDN": {
+      "title": "vra_fqdn",
+      "description": "FQDN of your vRA appliance (for example: vra.example.local)",
       "required": true,
       "type": "string"
     },
-    "VRA_IAAS_BASE_URL": {
-      "title": "base_url",
-      "description": "The base URL of your vRA instance (e.g., https://vra.example.com)",
+    "VRA_USERNAME": {
+      "title": "vra_username",
+      "description": "Username for vRA login",
+      "required": true,
+      "type": "string"
+    },
+    "VRA_PASSWORD": {
+      "title": "vra_password",
+      "description": "Password for vRA login",
       "required": true,
       "type": "string"
     }
