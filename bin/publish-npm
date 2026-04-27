@@ -11,6 +11,14 @@ cd dist
 PACKAGE_NAME="$(jq -r -e '.name' ./package.json)"
 VERSION="$(jq -r -e '.version' ./package.json)"
 
+# Verify npm authentication before trying to publish.
+NPM_USER="$(npm whoami 2>/dev/null || true)"
+if [[ -z "$NPM_USER" ]]; then
+  echo "ERROR: npm authentication failed. Check that NPM_TOKEN is valid and has publish permissions."
+  exit 1
+fi
+echo "Authenticated to npm as: $NPM_USER"
+
 # Get latest version from npm
 #
 # If the package doesn't exist, npm will return:
@@ -35,6 +43,16 @@ elif echo "$NPM_INFO" | jq -e '.error' > /dev/null 2>&1; then
 else
   # Success - get the version
   LAST_VERSION=$(echo "$NPM_INFO" | jq -r '.') # strip quotes
+fi
+
+# If the package already exists, ensure the authenticated user can publish it.
+if [[ -n "$LAST_VERSION" ]]; then
+  OWNER_INFO="$(npm owner ls "$PACKAGE_NAME" --json 2>/dev/null || true)"
+  if [[ -n "$OWNER_INFO" ]] && echo "$OWNER_INFO" | jq -e --arg user "$NPM_USER" '[.[] | select(.name == $user)] | length == 0' > /dev/null 2>&1; then
+    echo "ERROR: npm user '$NPM_USER' is not an owner of '$PACKAGE_NAME'."
+    echo "Add this user as an owner, or use an NPM_TOKEN from an owner account."
+    exit 1
+  fi
 fi
 
 # Check if current version is pre-release (e.g. alpha / beta / rc)
