@@ -4,15 +4,47 @@ This directory contains the Model Context Protocol (MCP) server for vRealize Aut
 
 ## Standard Configuration (All IDEs)
 
-This server supports a standardized credential-based setup for all MCP clients:
+This server supports two platform families. Set `VRA_FQDN` plus the credentials for yours:
 
-- `VRA_FQDN`
-- `VRA_USERNAME`
-- `VRA_PASSWORD`
+### VCF Automation 9.x (VM Apps and All Apps organizations)
 
-The server exchanges these credentials for an IaaS bearer token on startup.
+On 9.x the old vRA 8 username/password refresh-token call (`/csp/gateway/am/api/login?access_token`) no longer exists. Tokens come from the OAuth endpoints of the organization instead.
 
-### Common MCP config snippet
+| Variable | Purpose |
+| --- | --- |
+| `VRA_FQDN` | VCF Automation hostname |
+| `VRA_ORG` | Tenant organization name (use `provider` for the provider context) |
+| `VRA_ORG_TYPE` | `vm-apps`, `all-apps` or `provider` (optional; only affects which token URL is tried first) |
+| `VRA_API_TOKEN` | **Recommended.** API token from *My Account > API Tokens* (or a service account refresh token) |
+| `VRA_USERNAME` / `VRA_PASSWORD` | Alternative: username/password session for the organization |
+| `VRA_AUTH_MODE` | Optional override: `api-token`, `session` or `legacy-csp` |
+
+How each is turned into a bearer token:
+
+- **API token (VM Apps and All Apps):** `POST /oauth/tenant/{org}/token` with `grant_type=refresh_token&refresh_token=<API token>` (provider: `/oauth/provider/token`). Broadcom's VM Apps docs show the same call under `/tm/oauth/tenant/{org}/token`; the server tries both and remembers the one that works. The access token is valid for about one hour and is refreshed automatically.
+- **Username/password:** `POST /cloudapi/1.0.0/sessions` with `Authorization: Basic base64(user@org:password)` (provider: `/cloudapi/1.0.0/sessions/provider` with `user@system`); the token is read from the `x-vmware-vcloud-access-token` response header. This is a Cloud Director style session token, so `/iaas/api` may reject it on some versions; the server probes this at startup and warns. Prefer an API token for IaaS work.
+- Tenant users that create API tokens need a role with *API Tokens: Manage*. Provider (system org) tokens are refused by tenant endpoints.
+
+```json
+{
+  "mcpServers": {
+    "vra_iaas-mcp": {
+      "command": "npx",
+      "args": ["-y", "vra_iaas-mcp"],
+      "env": {
+        "VRA_FQDN": "vcfa.example.local",
+        "VRA_ORG": "my-org",
+        "VRA_ORG_TYPE": "all-apps",
+        "VRA_API_TOKEN": "your-api-token"
+      }
+    }
+  }
+}
+```
+
+### vRA 8.x / Aria Automation 8.x
+
+Unchanged: set `VRA_FQDN`, `VRA_USERNAME` and `VRA_PASSWORD` (no `VRA_ORG`). The server uses the CSP login followed by `/iaas/api/login`.
 
 ```json
 {
@@ -29,6 +61,8 @@ The server exchanges these credentials for an IaaS bearer token on startup.
   }
 }
 ```
+
+You can also skip all of this and pass a ready-made token with `VRA_IAAS_BEARER_TOKEN`.
 
 ### Client locations
 

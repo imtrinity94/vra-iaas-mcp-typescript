@@ -32,7 +32,8 @@ Use local `stdio` transport and pass credentials through environment variables. 
 }
 ```
 
-The server auto-generates an IaaS bearer token from these credentials at startup.
+The server auto-generates an IaaS bearer token from these credentials at startup (vRA 8.x).
+For VCF Automation 9.x (VM Apps / All Apps organizations) set `VRA_ORG`, `VRA_ORG_TYPE` and `VRA_API_TOKEN` instead of username/password; see [packages/mcp-server/README.md](packages/mcp-server/README.md) for the full login flows.
 If you use self-signed certs in lab environments, set `NODE_TLS_REJECT_UNAUTHORIZED=0` in your MCP client env.
 
 ## Installation

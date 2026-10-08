@@ -9,6 +9,7 @@ import {
 } from '@modelcontextprotocol/sdk/types.js';
 import { ClientOptions } from 'vra_iaas';
 import VraIaas from 'vra_iaas';
+import { getFreshBearerToken } from './auth';
 import { codeTool } from './code-tool';
 import docsSearchTool from './docs-search-tool';
 import { McpOptions } from './options';
@@ -75,6 +76,9 @@ export function initMcpServer(params: {
     },
   });
 
+  const tokenIsManaged = !params.clientOptions?.bearerToken;
+  let currentBearerToken: string | undefined = params.clientOptions?.bearerToken ?? readEnv('VRA_IAAS_BEARER_TOKEN');
+
   const providedTools = selectTools(params.mcpOptions);
   const toolMap = Object.fromEntries(providedTools.map((mcpTool) => [mcpTool.tool.name, mcpTool]));
 
@@ -89,6 +93,14 @@ export function initMcpServer(params: {
     const mcpTool = toolMap[name];
     if (!mcpTool) {
       throw new Error(`Unknown tool: ${name}`);
+    }
+
+    // VCFA 9.x access tokens last ~1h: re-authenticate when the server owns the credentials.
+    // Skipped when the caller supplied its own token (CLI flag or per-request HTTP header).
+    const freshToken = tokenIsManaged ? await getFreshBearerToken() : undefined;
+    if (freshToken && freshToken !== currentBearerToken) {
+      client = client.withOptions({ bearerToken: freshToken });
+      currentBearerToken = freshToken;
     }
 
     return executeHandler(mcpTool.handler, client, args);

@@ -24,28 +24,50 @@
       "env": {
         "VRA_FQDN": "${user_config.VRA_FQDN}",
         "VRA_USERNAME": "${user_config.VRA_USERNAME}",
-        "VRA_PASSWORD": "${user_config.VRA_PASSWORD}"
+        "VRA_PASSWORD": "${user_config.VRA_PASSWORD}",
+        "VRA_ORG": "${user_config.VRA_ORG}",
+        "VRA_ORG_TYPE": "${user_config.VRA_ORG_TYPE}",
+        "VRA_API_TOKEN": "${user_config.VRA_API_TOKEN}"
       }
     }
   },
   "user_config": {
     "VRA_FQDN": {
       "title": "vra_fqdn",
-      "description": "FQDN of your vRA appliance (for example: vra.example.local)",
+      "description": "FQDN of your vRA / VCF Automation appliance (for example: vra.example.local)",
       "required": true,
       "type": "string"
     },
     "VRA_USERNAME": {
       "title": "vra_username",
-      "description": "Username for vRA login",
-      "required": true,
+      "description": "Username for vRA login (vRA 8.x, or VCFA 9.x session login; leave empty when using an API token)",
+      "required": false,
       "type": "string"
     },
     "VRA_PASSWORD": {
       "title": "vra_password",
-      "description": "Password for vRA login",
-      "required": true,
+      "description": "Password for vRA login (vRA 8.x, or VCFA 9.x session login; leave empty when using an API token)",
+      "required": false,
       "type": "string"
+    },
+    "VRA_ORG": {
+      "title": "vra_org",
+      "description": "VCFA 9.x tenant organization name (leave empty for vRA 8.x)",
+      "required": false,
+      "type": "string"
+    },
+    "VRA_ORG_TYPE": {
+      "title": "vra_org_type",
+      "description": "VCFA 9.x organization type: vm-apps, all-apps or provider",
+      "required": false,
+      "type": "string"
+    },
+    "VRA_API_TOKEN": {
+      "title": "vra_api_token",
+      "description": "VCFA 9.x API token (My Account > API Tokens). Recommended for 9.x",
+      "required": false,
+      "type": "string",
+      "sensitive": true
     }
   },
   "tools": [],
